@@ -41,7 +41,6 @@ const Navbar = ({ onSearch }) => {
     { to: '/', label: 'Trang chủ', icon: null },
     { to: '/menu', label: 'Thực đơn', icon: null },
     { to: '/orders', label: 'Đơn hàng', icon: null },
-    { to: '/address-test', label: 'Địa chỉ', icon: <MapPin size={14} /> },
   ];
 
   const isActive = (path) => location.pathname === path;
