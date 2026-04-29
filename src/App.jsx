@@ -11,7 +11,6 @@ import OrderHistoryPage from './pages/OrderHistoryPage';
 import LoginPage from './pages/LoginPage';
 import AdminDashboard from './pages/AdminDashboard';
 import CheckoutPage from './pages/CheckoutPage';
-import AddressTestPage from './pages/AddressTestPage';
 
 function AppLayout() {
   return (
@@ -26,7 +25,6 @@ function AppLayout() {
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/address-test" element={<AddressTestPage />} />
           <Route
             path="*"
             element={
