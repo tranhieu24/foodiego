@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #FF6B35;
+  --color-primary-dark: #E8551F;
+  --color-primary-light: #FF8C5A;
+  --color-secondary: #2D9B4E;
+  --color-secondary-dark: #1E7A3A;
+  --color-accent: #FFB347;
+  --color-dark: #1A1A2E;
+  --color-dark-card: #16213E;
+  --color-light: #FFF8F0;
+  --color-muted: #6B7280;
+  --font-sans: 'Inter', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #FFF8F0;
+  color: #1A1A2E;
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #FF6B35;
+  border-radius: 3px;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #FF6B35, #FFB347);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Food card hover */
+.food-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.food-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+}
+
+/* Pulse skeleton animation */
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+/* Slide in animation */
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.05); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-slide-in-right { animation: slideInRight 0.4s ease-out; }
+.animate-slide-in-up { animation: slideInUp 0.4s ease-out; }
+.animate-fade-in { animation: fadeIn 0.5s ease-out; }
+.animate-bounce-in { animation: bounceIn 0.5s ease-out; }
+
+/* Hero gradient */
+.hero-gradient {
+  background: linear-gradient(135deg, #1A1A2E 0%, #16213E 40%, #0F3460 100%);
+}
+
+/* Button primary */
+.btn-primary {
+  background: linear-gradient(135deg, #FF6B35, #E8551F);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #FF8C5A, #FF6B35);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Badge */
+.badge {
+  animation: bounceIn 0.3s ease-out;
+}
+
+/* Nav link active */
+.nav-link-active {
+  color: #FF6B35;
+  font-weight: 600;
+}
+
+/* Category chip active */
+.chip-active {
+  background: linear-gradient(135deg, #FF6B35, #E8551F);
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.35);
+}
+
+/* Smooth transition for all interactive elements */
+button, a, .interactive {
+  transition: all 0.2s ease;
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+  backdrop-filter: blur(4px);
+}
+
+/* Star rating */
+.star-filled {
+  color: #FFB347;
+}
+
+/* Status badges */
+.status-delivering {
+  background: rgba(255, 107, 53, 0.15);
+  color: #FF6B35;
+}
+.status-delivered {
+  background: rgba(45, 155, 78, 0.15);
+  color: #2D9B4E;
+}
+.status-cancelled {
+  background: rgba(239, 68, 68, 0.15);
+  color: #EF4444;
+}
+
+/* Table row hover */
+.table-row:hover {
+  background-color: rgba(255, 107, 53, 0.04);
+}
+
+/* Quantity control */
+.qty-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1.5px solid #e5e7eb;
+  background: white;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+.qty-btn:hover {
+  border-color: #FF6B35;
+  color: #FF6B35;
+}
+
+/* Price highlight */
+.price-total {
+  background: linear-gradient(135deg, #FF6B35, #FFB347);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
