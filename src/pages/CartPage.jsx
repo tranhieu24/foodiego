@@ -120,8 +120,8 @@ const CartPage = () => {
   }
 
   return (
-    <div className="min-h-screen py-10" style={{ backgroundColor: '#FFF8F0' }}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen py-10 overflow-x-hidden" style={{ backgroundColor: '#FFF8F0' }}>
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Page Header */}
         <div className="flex items-center justify-between mb-10">

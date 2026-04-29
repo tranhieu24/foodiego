@@ -59,7 +59,7 @@ const HomePage = () => {
   const slide = bannerSlides[currentSlide];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       {/* ===== HERO BANNER ===== */}
       <section className="relative overflow-hidden" style={{ minHeight: '520px' }}>
         <div
@@ -72,7 +72,7 @@ const HomePage = () => {
         />
         <div className="absolute inset-0 hero-gradient opacity-80" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-[520px]">
+        <div className="relative z-10 max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 flex items-center min-h-[520px]">
           <div className="text-white max-w-lg animate-fade-in" key={currentSlide}>
             <div
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-4"

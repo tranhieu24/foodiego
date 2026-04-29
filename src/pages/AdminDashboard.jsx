@@ -120,8 +120,8 @@ const AdminDashboard = () => {
   const formatPrice = (p) => Number(p).toLocaleString('vi-VN') + 'đ';
 
   return (
-    <div className="min-h-screen py-8" style={{ backgroundColor: '#F8F9FA' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen py-8 overflow-x-hidden" style={{ backgroundColor: '#F8F9FA' }}>
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-3">

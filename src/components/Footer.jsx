@@ -13,7 +13,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="mt-20">
+    <footer className="mt-20 overflow-x-hidden">
       {/* Top accent line - cam duy nhất */}
       <div className="w-full h-0.5" style={{ backgroundColor: '#FF6B35' }} />
 
