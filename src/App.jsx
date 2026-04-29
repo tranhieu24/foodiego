@@ -14,9 +14,9 @@ import CheckoutPage from './pages/CheckoutPage';
 
 function AppLayout() {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#FFF8F0' }}>
+    <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: '#FFF8F0' }}>
       <Navbar />
-      <main className="pt-16 w-full overflow-x-hidden">
+      <main className="pt-16 w-full max-w-[1920px] mx-auto overflow-x-hidden">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/menu" element={<MenuPage />} />

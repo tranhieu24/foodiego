@@ -85,8 +85,8 @@ const CheckoutPage = () => {
   ];
 
   return (
-    <div className="min-h-screen py-10 px-4" style={{ backgroundColor: '#F5F5F5' }}>
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen py-10 px-4 overflow-x-hidden" style={{ backgroundColor: '#F5F5F5' }}>
+      <div className="max-w-[1440px] mx-auto">
 
         {/* Stepper */}
         {step < 3 && (

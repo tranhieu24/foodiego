@@ -47,7 +47,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-12 px-4 bg-gradient-to-br from-orange-50 to-orange-100">
+    <div className="min-h-screen flex items-center justify-center py-12 px-4 bg-gradient-to-br from-orange-50 to-orange-100 overflow-x-hidden">
       <div className="w-full max-w-md">
         <div className="bg-white rounded-[40px] shadow-2xl overflow-hidden animate-fade-in border border-white">
           {/* Top aesthetic bar */}

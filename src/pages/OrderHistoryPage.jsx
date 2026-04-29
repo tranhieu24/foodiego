@@ -207,8 +207,8 @@ const OrderHistoryPage = () => {
   }
 
   return (
-    <div className="min-h-screen py-12 bg-gray-50">
-      <div className="max-w-4xl mx-auto px-4">
+    <div className="min-h-screen py-12 bg-gray-50 overflow-x-hidden">
+      <div className="max-w-[1440px] mx-auto px-4">
         <div className="flex items-center justify-between mb-10">
           <div>
             <h1 className="text-4xl font-black text-gray-800 tracking-tight">Đơn hàng của tôi</h1>
