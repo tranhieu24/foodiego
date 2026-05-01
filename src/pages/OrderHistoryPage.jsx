@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const STATUS_CONFIG = {
   delivered: {
-    label: 'Đã giao',
+    label: 'Hoàn tất',
     icon: CheckCircle2,
     className: 'bg-green-100 text-green-700',
     color: '#2D9B4E',
@@ -31,7 +31,7 @@ const OrderCard = ({ order }) => {
   
   // Map backend status to frontend config
   const getStatus = () => {
-    if (order.isDelivered) return STATUS_CONFIG.delivered;
+    if (order.isDelivered || order.isPaid || order.paymentMethod !== 'COD') return STATUS_CONFIG.delivered;
     return STATUS_CONFIG.delivering;
   };
 
@@ -146,8 +146,8 @@ const OrderCard = ({ order }) => {
                 </div>
                 <div className="flex justify-between text-xs text-gray-500 font-medium">
                   <span>Trạng thái</span>
-                  <span className={order.isPaid ? 'text-green-600 font-bold' : 'text-orange-500 font-bold'}>
-                    {order.isPaid ? 'Đã thanh toán' : 'Chờ thanh toán'}
+                  <span className={(order.isPaid || order.paymentMethod !== 'COD') ? 'text-green-600 font-bold' : 'text-orange-500 font-bold'}>
+                    {(order.isPaid || order.paymentMethod !== 'COD') ? 'Đã thanh toán' : 'Chờ thanh toán'}
                   </span>
                 </div>
                 <div className="pt-2 mt-2 border-t border-gray-50 flex justify-between items-center">

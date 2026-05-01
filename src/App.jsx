@@ -9,14 +9,16 @@ import MenuPage from './pages/MenuPage';
 import CartPage from './pages/CartPage';
 import OrderHistoryPage from './pages/OrderHistoryPage';
 import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 import AdminDashboard from './pages/AdminDashboard';
 import CheckoutPage from './pages/CheckoutPage';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 function AppLayout() {
   return (
     <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: '#FFF8F0' }}>
       <Navbar />
-      <main className="pt-16 w-full max-w-[1920px] mx-auto overflow-x-hidden">
+      <main className="w-full max-w-[1920px] mx-auto overflow-x-hidden">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/menu" element={<MenuPage />} />
@@ -24,6 +26,7 @@ function AppLayout() {
           <Route path="/orders" element={<OrderHistoryPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route
             path="*"
@@ -75,9 +78,11 @@ function AppLayout() {
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <AppLayout />
-      </BrowserRouter>
+      <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
+        <BrowserRouter>
+          <AppLayout />
+        </BrowserRouter>
+      </GoogleOAuthProvider>
     </Provider>
   );
 }

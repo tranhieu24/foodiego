@@ -8,7 +8,7 @@ const { calculateDistance, calculateShippingFee } = require('../utils/haversine'
 // @route   POST /api/orders
 // @access  Private
 const addOrderItems = asyncHandler(async (req, res) => {
-  const { orderItems, shippingAddress, paymentMethod } = req.body;
+  const { orderItems, shippingAddress, paymentMethod, isPaid, paidAt } = req.body;
 
   if (orderItems && orderItems.length === 0) {
     res.status(400);
@@ -64,6 +64,8 @@ const addOrderItems = asyncHandler(async (req, res) => {
     itemsPrice,
     shippingFee,
     totalPrice,
+    isPaid: isPaid || false,
+    paidAt: isPaid ? (paidAt || Date.now()) : null,
   });
 
   const createdOrder = await order.save();
