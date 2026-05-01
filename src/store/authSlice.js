@@ -46,6 +46,32 @@ export const registerAsync = createAsyncThunk(
   }
 );
 
+// Async thunk for Google login
+export const googleLoginAsync = createAsyncThunk(
+  'auth/googleLogin',
+  async (token, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(`${API_URL}/google`, { token });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data?.message || 'Đăng nhập Google thất bại');
+    }
+  }
+);
+
+// Async thunk for Facebook login
+export const facebookLoginAsync = createAsyncThunk(
+  'auth/facebookLogin',
+  async (token, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(`${API_URL}/facebook`, { token });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response?.data?.message || 'Đăng nhập Facebook thất bại');
+    }
+  }
+);
+
 const authSlice = createSlice({
   name: 'auth',
   initialState: loadAuthFromStorage(),
@@ -55,6 +81,12 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.error = null;
       localStorage.removeItem('foodiego_auth');
+    },
+    loginSuccess: (state, action) => {
+      state.loading = false;
+      state.isAuthenticated = true;
+      state.user = action.payload;
+      saveAuthToStorage(state);
     },
     clearError: (state) => {
       state.error = null;
@@ -89,11 +121,34 @@ const authSlice = createSlice({
       .addCase(registerAsync.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
-      });
+      })
+      .addMatcher(
+        (action) => action.type.endsWith('/pending') && (action.type.includes('Login') || action.type.includes('register')),
+        (state) => {
+          state.loading = true;
+          state.error = null;
+        }
+      )
+      .addMatcher(
+        (action) => action.type.endsWith('/fulfilled') && (action.type.includes('Login') || action.type.includes('register')),
+        (state, action) => {
+          state.loading = false;
+          state.isAuthenticated = true;
+          state.user = action.payload;
+          saveAuthToStorage(state);
+        }
+      )
+      .addMatcher(
+        (action) => action.type.endsWith('/rejected') && (action.type.includes('Login') || action.type.includes('register')),
+        (state, action) => {
+          state.loading = false;
+          state.error = action.payload;
+        }
+      );
   },
 });
 
-export const { logout, clearError } = authSlice.actions;
+export const { logout, clearError, loginSuccess } = authSlice.actions;
 
 export const selectUser = (state) => state.auth.user;
 export const selectIsAuthenticated = (state) => state.auth.isAuthenticated;
