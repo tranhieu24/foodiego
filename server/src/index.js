@@ -16,16 +16,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-import authRoutes from './routes/authRoutes.js';
-import productRoutes from './routes/productRoutes.js';
-import orderRoutes from './routes/orderRoutes.js';
-import userRoutes from './routes/userRoutes.js';
-
 // Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/products', productRoutes);
-app.use('/api/orders', orderRoutes);
-app.use('/api/user', userRoutes);
+app.use('/api/auth', import './routes/authRoutes.js';);
+app.use('/api/products', import './routes/productRoutes.js';);
+app.use('/api/orders', import './routes/orderRoutes.js';);
+app.use('/api/user', import './routes/userRoutes.js';);
 
 // Root route
 app.get('/', (req, res) => {
@@ -44,4 +39,4 @@ if (process.env.NODE_ENV !== 'production') {
   });
 }
 
-export default app;
+export default app;;
