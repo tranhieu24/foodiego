@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const Product = require('../models/Product');
-const { importData } = require('../utils/seederUtils');
+import mongoose from 'mongoose';
+import Product from '../models/Product.js';
+import { importData  } from '../utils/seederUtils.js';
 
 const connectDB = async () => {
   try {
@@ -19,5 +19,5 @@ const connectDB = async () => {
   }
 };
 
-module.exports = connectDB;
+export default connectDB;;
 

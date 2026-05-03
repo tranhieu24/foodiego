@@ -40,7 +40,7 @@ const calculateShippingFee = (distance) => {
   return baseFee + additionalFee;
 };
 
-module.exports = {
+export default {;
   calculateDistance,
   calculateShippingFee,
 };

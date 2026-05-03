@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const { getUserAddresses, addAddress, updateAddress, calculateShipping } = require('../controllers/userController');
-const { protect } = require('../middleware/auth');
+import { getUserAddresses, addAddress, updateAddress, calculateShipping  } from '../controllers/userController.js';
+import { protect  } from '../middleware/auth.js';
 
 router.route('/addresses')
   .get(protect, getUserAddresses)
@@ -12,4 +12,4 @@ router.route('/addresses/:id')
 router.route('/calculate-shipping')
   .post(protect, calculateShipping);
 
-module.exports = router;
+export default router;;

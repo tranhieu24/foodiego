@@ -1,6 +1,6 @@
-const dotenv = require('dotenv');
-const connectDB = require('./config/db');
-const { importData, destroyData } = require('./utils/seederUtils');
+import dotenv from 'dotenv';
+import connectDB from './config/db.js';
+import { importData, destroyData  } from './utils/seederUtils.js';
 
 dotenv.config();
 

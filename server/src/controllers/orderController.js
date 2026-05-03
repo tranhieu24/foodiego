@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
-const asyncHandler = require('express-async-handler');
-const Order = require('../models/Order');
-const Product = require('../models/Product');
-const { calculateDistance, calculateShippingFee } = require('../utils/haversine');
+import mongoose from 'mongoose';
+import asyncHandler from 'express-async-handler';
+import Order from '../models/Order.js';
+import Product from '../models/Product.js';
+import { calculateDistance, calculateShippingFee  } from '../utils/haversine.js';
 
 // @desc    Create new order
 // @route   POST /api/orders
@@ -105,7 +105,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = {
+export default {;
   addOrderItems,
   getMyOrders,
   updateOrderToPaid,

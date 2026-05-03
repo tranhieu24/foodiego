@@ -1,6 +1,6 @@
-const jwt = require('jsonwebtoken');
-const asyncHandler = require('express-async-handler');
-const User = require('../models/User');
+import jwt from 'jsonwebtoken';
+import asyncHandler from 'express-async-handler';
+import User from '../models/User.js';
 
 // Generate JWT
 const generateToken = (id) => {
@@ -73,7 +73,7 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = {
+export default {;
   registerUser,
   loginUser,
 };

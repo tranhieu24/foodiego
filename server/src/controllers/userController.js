@@ -1,6 +1,6 @@
-const asyncHandler = require('express-async-handler');
-const User = require('../models/User');
-const { calculateDistance, calculateShippingFee } = require('../utils/haversine');
+import asyncHandler from 'express-async-handler';
+import User from '../models/User.js';
+import { calculateDistance, calculateShippingFee  } from '../utils/haversine.js';
 
 // @desc    Get user addresses
 // @route   GET /api/user/addresses
@@ -97,7 +97,7 @@ const calculateShipping = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = {
+export default {;
   getUserAddresses,
   addAddress,
   updateAddress,

@@ -1,8 +1,8 @@
-const User = require('../models/User');
-const Product = require('../models/Product');
-const Order = require('../models/Order');
-const users = require('../data/users');
-const products = require('../data/products');
+import User from '../models/User.js';
+import Product from '../models/Product.js';
+import Order from '../models/Order.js';
+import users from '../data/users.js';
+import products from '../data/products.js';
 
 const importData = async () => {
   try {
@@ -33,7 +33,7 @@ const destroyData = async () => {
   }
 };
 
-module.exports = {
+export default {;
   importData,
   destroyData,
 };
