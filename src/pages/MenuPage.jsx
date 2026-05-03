@@ -6,6 +6,7 @@ import FoodCard from '../components/FoodCard';
 import CategoryChip from '../components/CategoryChip';
 import { SkeletonGrid } from '../components/SkeletonCard';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 
 const SORT_OPTIONS = [
   { value: 'default', label: 'Mặc định' },
@@ -38,7 +39,7 @@ const MenuPage = () => {
   useEffect(() => {
     const fetchFoods = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/products');
+        const { data } = await axios.get(`${API_BASE_URL}/products`);
         // Map _id to id for compatibility with existing components
         const mappedData = data.map(item => ({
           ...item,

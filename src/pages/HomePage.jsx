@@ -4,6 +4,7 @@ import { ArrowRight, ChevronLeft, ChevronRight, Zap, Shield, Truck, Loader2 } fr
 import { bannerSlides, categories } from '../data/mockData';
 import FoodCard from '../components/FoodCard';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 
 const HomePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -16,7 +17,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchFoods = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/products');
+        const { data } = await axios.get(`${API_BASE_URL}/products`);
         const mappedData = data.map(item => ({
           ...item,
           id: item._id,
