@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "dev:all": "concurrently \"npm run dev\" \"npm run dev --prefix server\"",
+    "db:reset": "npm run data:import --prefix server",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
