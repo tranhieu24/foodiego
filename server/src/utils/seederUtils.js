@@ -33,7 +33,4 @@ const destroyData = async () => {
   }
 };
 
-export default {
-  importData,
-  destroyData,
-};
+export { importData, destroyData };
