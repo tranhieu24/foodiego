@@ -72,7 +72,7 @@ const MenuPage = () => {
     if (selectedCategory !== 'all') {
       // Note: Backend categories might be different case or name, mapping needed if they don't match
       // For now, assume a simple match or case-insensitive match
-      result = result.filter((f) => f.category.toLowerCase() === selectedCategory.toLowerCase());
+      result = result.filter((f) => f.category && f.category.toLowerCase() === selectedCategory.toLowerCase());
     }
 
     // Filter by search
@@ -80,9 +80,9 @@ const MenuPage = () => {
       const q = searchQuery.toLowerCase();
       result = result.filter(
         (f) =>
-          f.name.toLowerCase().includes(q) ||
-          f.description.toLowerCase().includes(q) ||
-          f.category.toLowerCase().includes(q)
+          (f.name && f.name.toLowerCase().includes(q)) ||
+          (f.description && f.description.toLowerCase().includes(q)) ||
+          (f.category && f.category.toLowerCase().includes(q))
       );
     }
 

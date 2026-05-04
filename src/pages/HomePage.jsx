@@ -46,7 +46,7 @@ const HomePage = () => {
   const featuredFoods = useMemo(() => foodData.filter((f) => f.isPopular).slice(0, 5), [foodData]);
   const filteredFoods = useMemo(() => {
     if (selectedCategory === 'all') return foodData.slice(0, 8);
-    return foodData.filter((f) => f.category.toLowerCase() === selectedCategory.toLowerCase()).slice(0, 8);
+    return foodData.filter((f) => f.category && f.category.toLowerCase() === selectedCategory.toLowerCase()).slice(0, 8);
   }, [foodData, selectedCategory]);
 
   const topRatedFoods = useMemo(() => foodData.filter((f) => f.rating >= 4.8).slice(0, 5), [foodData]);
