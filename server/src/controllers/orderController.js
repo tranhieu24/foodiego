@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import asyncHandler from 'express-async-handler';
 import Order from '../models/Order.js';
 import Product from '../models/Product.js';
-import { calculateDistance, calculateShippingFee  } from '../utils/haversine.js';
+import { calculateDistance, calculateShippingFee } from '../utils/haversine.js';
 
 // @desc    Create new order
 // @route   POST /api/orders
@@ -31,7 +31,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
       res.status(404);
       throw new Error(`Product ${item.product} not found`);
     }
-    
+
     itemsPrice += product.price * item.qty;
     itemsWithActualPrice.push({
       name: product.name,
@@ -96,7 +96,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
   if (order) {
     order.isPaid = true;
     order.paidAt = Date.now();
-    
+
     const updatedOrder = await order.save();
     res.json(updatedOrder);
   } else {
@@ -105,7 +105,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
   }
 });
 
-export default {;
+export default {
   addOrderItems,
   getMyOrders,
   updateOrderToPaid,

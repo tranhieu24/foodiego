@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import Product from '../models/Product.js';
-import { importData  } from '../utils/seederUtils.js';
+import { importData } from '../utils/seederUtils.js';
 
 const connectDB = async () => {
   try {
@@ -19,5 +19,5 @@ const connectDB = async () => {
   }
 };
 
-export default connectDB;;
+export default connectDB;
 

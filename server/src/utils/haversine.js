@@ -13,9 +13,9 @@ const calculateDistance = (lat1, lon1, lat2, lon2) => {
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.cos(lat1 * (Math.PI / 180)) *
-      Math.cos(lat2 * (Math.PI / 180)) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
+    Math.cos(lat2 * (Math.PI / 180)) *
+    Math.sin(dLon / 2) *
+    Math.sin(dLon / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   const distance = R * c;
   return distance;
@@ -29,18 +29,18 @@ const calculateDistance = (lat1, lon1, lat2, lon2) => {
 const calculateShippingFee = (distance) => {
   const baseFee = 15000; // Minimum fee for first 2km
   const feePerKm = 5000; // Additional fee per km after 2km
-  
+
   if (distance <= 2) {
     return baseFee;
   }
-  
+
   const additionalDistance = distance - 2;
   const additionalFee = Math.ceil(additionalDistance) * feePerKm;
-  
+
   return baseFee + additionalFee;
 };
 
-export default {;
+export default {
   calculateDistance,
   calculateShippingFee,
 };

@@ -73,7 +73,7 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-export default {;
+export default {
   registerUser,
   loginUser,
 };

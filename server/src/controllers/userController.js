@@ -1,6 +1,6 @@
 import asyncHandler from 'express-async-handler';
 import User from '../models/User.js';
-import { calculateDistance, calculateShippingFee  } from '../utils/haversine.js';
+import { calculateDistance, calculateShippingFee } from '../utils/haversine.js';
 
 // @desc    Get user addresses
 // @route   GET /api/user/addresses
@@ -26,7 +26,7 @@ const addAddress = asyncHandler(async (req, res) => {
     if (isDefault) {
       user.addresses.forEach(addr => addr.isDefault = false);
     }
-    
+
     const newAddress = {
       label,
       addressDetail,
@@ -77,7 +77,7 @@ const updateAddress = asyncHandler(async (req, res) => {
 // @access  Private
 const calculateShipping = asyncHandler(async (req, res) => {
   const { lat, lng } = req.body;
-  
+
   if (!lat || !lng) {
     res.status(400);
     throw new Error('Please provide coordinates');
@@ -97,7 +97,7 @@ const calculateShipping = asyncHandler(async (req, res) => {
   });
 });
 
-export default {;
+export default {
   getUserAddresses,
   addAddress,
   updateAddress,
