@@ -117,7 +117,7 @@ const AdminDashboard = () => {
     setModalOpen(false);
   };
 
-  const formatPrice = (p) => Number(p).toLocaleString('vi-VN') + 'đ';
+  const formatPrice = (p) => p ? Number(p).toLocaleString('vi-VN') + 'đ' : '--';
 
   return (
     <div className="min-h-screen py-8 overflow-x-hidden" style={{ backgroundColor: '#F8F9FA' }}>
