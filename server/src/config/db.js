@@ -11,10 +11,15 @@ const connectDB = async () => {
     const conn = await mongoose.connect(process.env.MONGODB_URI);
     console.log(`MongoDB Connected: ${conn.connection.host}`);
 
-    // Auto-seed if database is empty
-    const productCount = await Product.countDocuments();
-    if (productCount === 0) {
-      console.log('Database is empty. Starting auto-seed...');
+    // Auto-seed if no valid products exist
+    const VALID_CATEGORIES = ['burger', 'pizza', 'pho', 'sushi', 'salad', 'drink', 'dessert'];
+    const validCount = await Product.countDocuments({
+      price: { $gt: 0 },
+      category: { $in: VALID_CATEGORIES },
+      image: { $exists: true, $ne: '' },
+    });
+    if (validCount < 10) {
+      console.log('Insufficient valid products. Starting re-seed...');
       await importData();
     }
   } catch (error) {

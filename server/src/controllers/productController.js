@@ -5,7 +5,12 @@ import Product from '../models/Product.js';
 // @route   GET /api/products
 // @access  Public
 const getProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({});
+  const VALID_CATEGORIES = ['burger', 'pizza', 'pho', 'sushi', 'salad', 'drink', 'dessert'];
+  const products = await Product.find({
+    price: { $gt: 0 },
+    category: { $in: VALID_CATEGORIES },
+    image: { $exists: true, $ne: '' },
+  });
   res.json(products);
 });
 
