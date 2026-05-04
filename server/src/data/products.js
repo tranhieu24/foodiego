@@ -7,7 +7,7 @@ const products = [
     originalPrice: 110000,
     rating: 4.8,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Burger bò Úc nhập khẩu, 2 lớp phô mai cheddar, rau xà lách tươi, sốt đặc biệt.',
   },
   {
@@ -17,7 +17,7 @@ const products = [
     originalPrice: 75000,
     rating: 4.5,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1619096252214-ef06c45683e3?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Ức gà chiên giòn, sốt mayo cay, xà lách và cà chua tươi.',
   },
   {
@@ -26,7 +26,7 @@ const products = [
     price: 95000,
     rating: 4.7,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1525059696034-4967a8e1dca2?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1553979459-d2229ba7433a?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Nhân tôm tươi giòn rụm, sốt tartar đặc trưng, bánh bun mè đen.',
   },
   {
@@ -35,7 +35,7 @@ const products = [
     price: 115000,
     rating: 4.9,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Bò Wagyu nướng than hồng, hành tây caramel, phô mai Thụy Sĩ.',
   },
   {
@@ -44,7 +44,7 @@ const products = [
     price: 79000,
     rating: 4.3,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Thịt heo quay giòn bì, dưa leo muối, sốt BBQ mật ong.',
   },
   {
@@ -53,7 +53,7 @@ const products = [
     price: 85000,
     rating: 4.6,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1520072959219-c595dc870360?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1520072959219-c595dc870360?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Nấm Portobello nướng, phô mai dê, rau mầm và sốt pesto.',
   },
   {
@@ -62,7 +62,7 @@ const products = [
     price: 72000,
     rating: 4.4,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1619096252214-ef06c45683e3?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Gà áp chảo sốt Teriyaki Nhật Bản, dứa nướng và mè rang.',
   },
   {
@@ -71,7 +71,7 @@ const products = [
     price: 99000,
     rating: 4.7,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1596662951482-0c4ba74a6df6?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1596662951482-0c4ba74a6df6?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Bò băm, trứng ốp la lòng đào, thịt xông khói và sốt phô mai chảy.',
   },
   {
@@ -80,7 +80,7 @@ const products = [
     price: 185000,
     rating: 5.0,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Thách thức mọi cơn đói với 3 lớp bò, 3 lớp phô mai và cực nhiều topping.',
   },
   {
@@ -89,7 +89,7 @@ const products = [
     price: 135000,
     rating: 4.8,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Cá hồi tươi băm viên, thì là, nụ bạch hoa và sốt kem chua.',
   },
 
@@ -100,7 +100,7 @@ const products = [
     price: 145000,
     rating: 4.6,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Pizza kiểu Ý với sốt cà chua San Marzano, phô mai mozzarella tươi và lá húng quế.',
   },
   {
@@ -110,7 +110,7 @@ const products = [
     originalPrice: 220000,
     rating: 4.9,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Tôm, mực, thanh cua kết hợp sốt Pesto xanh thơm lừng và phô mai mozzarella.',
   },
   {
@@ -119,7 +119,7 @@ const products = [
     price: 175000,
     rating: 4.4,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Xúc xích Ý, thịt xông khói, nấm, ớt chuông và hành tây.',
   },
   {
@@ -128,7 +128,7 @@ const products = [
     price: 165000,
     rating: 4.8,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1573458434072-c43a0216792f?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1573458434072-c43a0216792f?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Sự hòa quyện của Mozzarella, Parmesan, Cheddar và Blue Cheese.',
   },
   {
@@ -137,7 +137,7 @@ const products = [
     price: 185000,
     rating: 4.7,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Thịt bò thăn nướng, nấm kim châm, hành tây và sốt tiêu đen đậm đà.',
   },
   {
@@ -146,7 +146,7 @@ const products = [
     price: 135000,
     rating: 4.2,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Vị ngọt của dứa tươi kết hợp với thịt nguội và phô mai kéo sợi.',
   },
   {
@@ -155,7 +155,7 @@ const products = [
     price: 155000,
     rating: 4.5,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Gà nướng, ngô ngọt, hành tây đỏ và sốt BBQ đặc trưng.',
   },
   {
@@ -164,7 +164,7 @@ const products = [
     price: 125000,
     rating: 4.3,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1593504049359-7b7d92c7107d?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1593504049359-7b7d92c7107d?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Ớt chuông, nấm, súp lơ, cà chua bi và phô mai không béo.',
   },
 
@@ -175,7 +175,7 @@ const products = [
     price: 65000,
     rating: 4.9,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Phở bò truyền thống với nước dùng hầm 12 tiếng, thịt bò tái mềm và giá đỗ tươi.',
   },
   {
@@ -184,7 +184,7 @@ const products = [
     price: 55000,
     rating: 4.8,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Thịt nướng than hoa thơm lừng, chả viên đậm đà ăn kèm nước mắm chua ngọt và bún tươi.',
   },
   {
@@ -193,7 +193,7 @@ const products = [
     price: 45000,
     rating: 4.6,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1552611052-33e04de081de?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1617093727343-374698b1b08d?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Sợi mì vàng dai, tôm tươi, thịt xíu, đậu phộng rang và bánh tráng giòn.',
   },
   {
@@ -202,7 +202,7 @@ const products = [
     price: 75000,
     rating: 4.9,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1624536762310-9f5b61e0f6db?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1555126634-323283e090fa?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Nước dùng cay nồng hương mắm ruốc, bắp bò, giò heo và chả cua.',
   },
   {
@@ -211,7 +211,7 @@ const products = [
     price: 60000,
     rating: 4.7,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1635349372138-04470716618d?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1552611052-33e04de081de?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Tôm, thịt băm, gan heo, trứng cút và sợi hủ tiếu dai dai đặc trưng.',
   },
   {
@@ -220,7 +220,7 @@ const products = [
     price: 55000,
     rating: 4.5,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1526318896980-cf78c088247c?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1526318896980-cf78c088247c?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Hoành thánh tôm thịt, thịt xá xíu hồng hào và nước dùng gà thanh ngọt.',
   },
   {
@@ -229,7 +229,7 @@ const products = [
     price: 50000,
     rating: 4.6,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1617421711763-7182394bb9d3?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1637806931565-fd73e97c0c91?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Gà ta xé nhỏ, da giòn, nước dùng trong veo thơm mùi gừng và lá chanh.',
   },
   {
@@ -238,7 +238,7 @@ const products = [
     price: 45000,
     rating: 4.8,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1624300629298-e9db0adeeecf?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Riêu cua thật 100%, đậu hũ chiên, cà chua và huyết heo.',
   },
   {
@@ -247,7 +247,7 @@ const products = [
     price: 40000,
     rating: 4.4,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1512058560366-cd2429598a60?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1512058560366-cd2429598a60?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Mì gói trụng vừa tới, trộn sốt muối ớt cay xè, trứng lòng đào và thịt bò.',
   },
   {
@@ -256,7 +256,7 @@ const products = [
     price: 65000,
     rating: 4.7,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1528605105345-5344ea20e269?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1528605105345-5344ea20e269?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Bánh phở mềm cuộn thịt bò xào gừng tỏi và rau thơm.',
   },
 
@@ -268,7 +268,7 @@ const products = [
     originalPrice: 260000,
     rating: 4.7,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Bộ combo gồm 8 nigiri cá hồi, 4 cuộn uramaki và 4 tempura ebi.',
   },
   {
@@ -277,7 +277,7 @@ const products = [
     price: 155000,
     rating: 4.9,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1553621042-f6e147245754?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1553621042-f6e147245754?w=600&h=450&fit=crop&auto=format&q=80',
     description: '5 lát cá hồi Na Uy hảo hạng, béo ngậy, phục vụ kèm wasabi và gừng hồng.',
   },
   {
@@ -286,7 +286,7 @@ const products = [
     price: 85000,
     rating: 4.4,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Thanh cua, bơ sáp, dưa leo cuộn ngược với lớp trứng tôm bên ngoài.',
   },
   {
@@ -295,7 +295,7 @@ const products = [
     price: 125000,
     rating: 4.8,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Lươn Unagi nướng sốt Kabayaki ngọt đậm đà trên miếng cơm dẻo.',
   },
   {
@@ -304,7 +304,7 @@ const products = [
     price: 95000,
     rating: 4.5,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1583623025817-d180a2221d0a?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1583623025817-d180a2221d0a?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Gunkan sushi với đầy ắp trứng cá Tobiko nổ lách tách trong miệng.',
   },
   {
@@ -313,7 +313,7 @@ const products = [
     price: 110000,
     rating: 4.7,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1598511757337-fe2be69a79c7?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1615361200141-f45040f367be?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Tôm sú tẩm bột chiên giòn rụm theo phong cách Nhật Bản.',
   },
   {
@@ -322,7 +322,7 @@ const products = [
     price: 65000,
     rating: 4.2,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1559466273-d95e72debaf8?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1559466273-d95e72debaf8?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Lựa chọn nhẹ nhàng với nhân bơ sáp và dưa leo giòn mát.',
   },
 
@@ -333,7 +333,7 @@ const products = [
     price: 85000,
     rating: 4.4,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Rau romaine tươi, ức gà nướng thơm, crouton giòn, sốt Caesar đặc biệt.',
   },
   {
@@ -342,7 +342,7 @@ const products = [
     price: 95000,
     rating: 4.8,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Bơ sáp chín mềm, ức gà áp chảo, cà chua bi và sốt dầu giấm balsamic.',
   },
   {
@@ -351,7 +351,7 @@ const products = [
     price: 75000,
     rating: 4.5,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Bắp cải tím, cà rốt, ngô, đậu đỏ và hạt quinoa béo ngậy.',
   },
   {
@@ -360,7 +360,7 @@ const products = [
     price: 125000,
     rating: 4.9,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Cá hồi xông khói, trứng chần, rau mầm và sốt mù tạt mật ong.',
   },
   {
@@ -369,7 +369,7 @@ const products = [
     price: 65000,
     rating: 4.3,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Dưa hấu, xoài, thanh long trộn cùng sữa chua không đường và hạt chia.',
   },
 
@@ -380,7 +380,7 @@ const products = [
     price: 45000,
     rating: 4.8,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1558857563-b371033873b8?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Trà sữa Đài Loan truyền thống với lớp trân châu hoàng kim dẻo ngọt.',
   },
   {
@@ -389,7 +389,7 @@ const products = [
     price: 35000,
     rating: 4.7,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Trà đen thơm mát, miếng đào giòn ngọt kết hợp cùng hương sả và cam tươi.',
   },
   {
@@ -398,7 +398,7 @@ const products = [
     price: 39000,
     rating: 4.9,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Sự kết hợp hoàn hảo giữa vị đắng cà phê, vị béo của kem và một chút mặn từ muối.',
   },
   {
@@ -407,7 +407,7 @@ const products = [
     price: 30000,
     rating: 4.6,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1557800636-894a64c1696f?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1534353473418-4cfa0e4ef5a7?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Ép từ cam sành mọng nước, nguyên chất 100%, bổ sung vitamin C.',
   },
   {
@@ -416,7 +416,7 @@ const products = [
     price: 42000,
     rating: 4.5,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Vị chua ngọt của việt quất hòa quyện cùng sự sảng khoái của bạc hà và soda.',
   },
 
@@ -427,7 +427,7 @@ const products = [
     price: 60000,
     rating: 4.8,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Tiramisu chuẩn công thức Ý với mascarpone, espresso và bột cacao.',
   },
   {
@@ -436,7 +436,7 @@ const products = [
     price: 55000,
     rating: 4.7,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Cheesecake New York mềm mịn, phủ sốt dâu tây tươi, bánh quy đế giòn.',
   },
   {
@@ -445,7 +445,7 @@ const products = [
     price: 25000,
     rating: 4.9,
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1528975604071-b4dc52a2d18c?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1528975604071-b4dc52a2d18c?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Flan trứng mềm mượt, rưới nước cốt dừa béo ngậy và caramel đắng nhẹ.',
   },
   {
@@ -454,7 +454,7 @@ const products = [
     price: 45000,
     rating: 4.6,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1511911063855-2bf39afa5b2e?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Vị chua thanh của chanh leo kết hợp lớp kem mousse mịn màng.',
   },
   {
@@ -463,7 +463,7 @@ const products = [
     price: 35000,
     rating: 4.5,
     isPopular: false,
-    image: 'https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=600&h=450&fit=crop',
+    image: 'https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=600&h=450&fit=crop&auto=format&q=80',
     description: 'Kem tươi được làm lạnh trên chảo băng, cuộn tròn đẹp mắt với nhiều topping.',
   },
 ];

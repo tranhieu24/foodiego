@@ -3,8 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, ChevronLeft, ChevronRight, Zap, Shield, Truck, Loader2 } from 'lucide-react';
 import { bannerSlides, categories } from '../data/mockData';
 import FoodCard from '../components/FoodCard';
-import axios from 'axios';
-import API_BASE_URL from '../config';
+import api from '../utils/api';
 
 const HomePage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -17,7 +16,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchFoods = async () => {
       try {
-        const { data } = await axios.get(`${API_BASE_URL}/products`);
+        const { data } = await api.get('/products');
         const mappedData = data.map(item => ({
           ...item,
           id: item._id,
