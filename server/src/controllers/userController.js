@@ -97,9 +97,18 @@ const calculateShipping = asyncHandler(async (req, res) => {
   });
 });
 
+// @desc    Get all users (Admin)
+// @route   GET /api/user/all
+// @access  Private/Admin
+const getAllUsers = asyncHandler(async (req, res) => {
+  const users = await User.find({}).select('-password').sort({ createdAt: -1 });
+  res.json(users);
+});
+
 export {
   getUserAddresses,
   addAddress,
   updateAddress,
-  calculateShipping
+  calculateShipping,
+  getAllUsers,
 };
