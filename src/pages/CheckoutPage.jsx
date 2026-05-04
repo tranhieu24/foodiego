@@ -131,7 +131,7 @@ const CheckoutPage = () => {
   const shipping = useMemo(() => (subtotal >= FREE_SHIP_THRESHOLD ? 0 : SHIPPING_FEE), [subtotal]);
   const discountAmount = useMemo(() => Math.round(subtotal * discountRate), [subtotal, discountRate]);
   const total = useMemo(() => subtotal + shipping - discountAmount, [subtotal, shipping, discountAmount]);
-  const formatPrice = (p) => p.toLocaleString('vi-VN') + 'đ';
+  const formatPrice = (p) => p ? Number(p).toLocaleString('vi-VN') + 'đ' : '--';
 
   if (!isAuthenticated) return <Navigate to="/login?redirect=/checkout" replace />;
   if (items.length === 0 && !orderSuccess) return <Navigate to="/menu" replace />;

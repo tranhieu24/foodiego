@@ -36,7 +36,7 @@ const FoodCard = ({ food }) => {
   }, [dispatch, food]);
 
   const formatPrice = (price) =>
-    price.toLocaleString('vi-VN') + 'đ';
+    price ? price.toLocaleString('vi-VN') + 'đ' : '--';
 
   const discountPercent = food.originalPrice
     ? Math.round((1 - food.price / food.originalPrice) * 100)

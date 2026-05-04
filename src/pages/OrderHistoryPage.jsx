@@ -38,7 +38,7 @@ const OrderCard = ({ order }) => {
   const status = getStatus();
   const StatusIcon = status.icon;
 
-  const formatPrice = (p) => p.toLocaleString('vi-VN') + 'đ';
+  const formatPrice = (p) => p ? Number(p).toLocaleString('vi-VN') + 'đ' : '--';
   const formatDate = (dateStr) =>
     new Date(dateStr).toLocaleDateString('vi-VN', {
       day: '2-digit',

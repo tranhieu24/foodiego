@@ -95,7 +95,7 @@ const CartPage = () => {
     }
   }, [dispatch, promoInput]);
 
-  const formatPrice = (p) => p.toLocaleString('vi-VN') + 'đ';
+  const formatPrice = (p) => p ? Number(p).toLocaleString('vi-VN') + 'đ' : '--';
 
   if (items.length === 0) {
     return (
