@@ -105,7 +105,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
   }
 });
 
-export default {
+export {
   addOrderItems,
   getMyOrders,
   updateOrderToPaid,

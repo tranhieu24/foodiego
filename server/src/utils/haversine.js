@@ -40,7 +40,4 @@ const calculateShippingFee = (distance) => {
   return baseFee + additionalFee;
 };
 
-export default {
-  calculateDistance,
-  calculateShippingFee,
-};
+export { calculateDistance, calculateShippingFee };

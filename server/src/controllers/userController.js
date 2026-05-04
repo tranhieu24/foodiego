@@ -97,7 +97,7 @@ const calculateShipping = asyncHandler(async (req, res) => {
   });
 });
 
-export default {
+export {
   getUserAddresses,
   addAddress,
   updateAddress,

@@ -81,7 +81,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
   }
 });
 
-export default {
+export {
   getProducts,
   getProductById,
   createProduct,
