@@ -12,10 +12,12 @@ const api = axios.create({
 // Add a request interceptor to include the token
 api.interceptors.request.use(
   (config) => {
-    const userInfo = localStorage.getItem('userInfo');
-    if (userInfo) {
-      const { token } = JSON.parse(userInfo);
-      config.headers.Authorization = `Bearer ${token}`;
+    const auth = localStorage.getItem('foodiego_auth');
+    if (auth) {
+      const { user } = JSON.parse(auth);
+      if (user?.token) {
+        config.headers.Authorization = `Bearer ${user.token}`;
+      }
     }
     return config;
   },

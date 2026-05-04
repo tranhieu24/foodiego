@@ -1,8 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-import API_BASE_URL from '../config';
+import api from '../utils/api';
 
-const API_URL = `${API_BASE_URL}/auth`;
+const API_URL = '/auth';
 
 const loadAuthFromStorage = () => {
   try {
@@ -26,7 +25,7 @@ export const loginAsync = createAsyncThunk(
   'auth/login',
   async ({ email, password }, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${API_URL}/login`, { email, password });
+      const response = await api.post(`${API_URL}/login`, { email, password });
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || 'Đăng nhập thất bại');
@@ -39,7 +38,7 @@ export const registerAsync = createAsyncThunk(
   'auth/register',
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${API_URL}/register`, userData);
+      const response = await api.post(`${API_URL}/register`, userData);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || 'Đăng ký thất bại');
@@ -52,7 +51,7 @@ export const googleLoginAsync = createAsyncThunk(
   'auth/googleLogin',
   async (token, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${API_URL}/google`, { token });
+      const response = await api.post(`${API_URL}/google`, { token });
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || 'Đăng nhập Google thất bại');
@@ -65,7 +64,7 @@ export const facebookLoginAsync = createAsyncThunk(
   'auth/facebookLogin',
   async (token, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${API_URL}/facebook`, { token });
+      const response = await api.post(`${API_URL}/facebook`, { token });
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || 'Đăng nhập Facebook thất bại');
