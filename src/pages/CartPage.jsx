@@ -1,5 +1,5 @@
 import { useMemo, useCallback, useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Trash2, Plus, Minus, ShoppingBag, Tag, X, ArrowRight, Truck, ShieldCheck, ChevronRight, Zap } from 'lucide-react';
@@ -35,7 +35,7 @@ const CartPage = () => {
 
   // Fetch real products from DB for recommendations
   useEffect(() => {
-    axios.get('http://localhost:5000/api/products')
+    api.get('/products')
       .then(({ data }) => {
         const cartIds = new Set(items.map(i => i.id));
         const others = data

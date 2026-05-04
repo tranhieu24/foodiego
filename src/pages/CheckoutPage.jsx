@@ -12,6 +12,7 @@ import { QRCodeSVG } from 'qrcode.react';
 import { selectCartItems, selectCartSubtotal, selectCartDiscount, clearCart } from '../store/cartSlice';
 import { selectUser, selectIsAuthenticated } from '../store/authSlice';
 import axios from 'axios';
+import api from '../utils/api';
 import toast from 'react-hot-toast';
 
 const SHIPPING_FEE = 25000;
@@ -148,13 +149,13 @@ const CheckoutPage = () => {
       const fullAddress = `${formData.address}, ${wName}, ${dName}, ${pName}`;
       const isPaid = paymentMethod !== 'COD';
       
-      const res = await axios.post('http://localhost:5000/api/orders', {
+      const res = await api.post('/orders', {
         orderItems: items.map(i => ({ product: i.id, qty: i.quantity })),
         shippingAddress: { address: fullAddress, city: pName, phone: formData.phone },
         paymentMethod,
         isPaid: isPaid,
         paidAt: isPaid ? new Date() : null,
-      }, { headers: { Authorization: `Bearer ${user.token}` } });
+      });
       
       setOrderSuccess(res.data);
       dispatch(clearCart());

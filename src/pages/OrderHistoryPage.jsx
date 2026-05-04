@@ -3,7 +3,7 @@ import { Package, Clock, CheckCircle2, XCircle, ChevronDown, ChevronUp, Shopping
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectIsAuthenticated, selectUser } from '../store/authSlice';
-import axios from 'axios';
+import api from '../utils/api';
 
 const STATUS_CONFIG = {
   delivered: {
@@ -173,10 +173,7 @@ const OrderHistoryPage = () => {
     const fetchOrders = async () => {
       if (!isAuthenticated || !user) return;
       try {
-        const config = {
-          headers: { Authorization: `Bearer ${user.token}` }
-        };
-        const { data } = await axios.get(`http://localhost:5000/api/orders/user/${user._id}`, config);
+        const { data } = await api.get(`/orders/user/${user._id}`);
         setOrders(data);
       } catch (error) {
         console.error('Error fetching orders:', error);

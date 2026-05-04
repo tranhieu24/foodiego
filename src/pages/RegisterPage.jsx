@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, Loader2, ChefHat, CheckCircle2, ShieldCheck, Zap } from 'lucide-react';
-import axios from 'axios';
+import api from '../utils/api';
 import { 
   registerAsync, 
   selectIsAuthenticated, 
@@ -61,7 +61,7 @@ const RegisterPage = () => {
     
     setCheckingEmail(true);
     try {
-      const response = await axios.get(`http://localhost:5000/api/auth/check-email?email=${email}`);
+      const response = await api.get(`/auth/check-email?email=${email}`);
       if (response.data.exists) {
         setError('email', { type: 'manual', message: 'Email này đã được đăng ký' });
       } else {
