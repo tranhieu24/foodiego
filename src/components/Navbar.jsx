@@ -99,7 +99,7 @@ const Navbar = ({ onSearch }) => {
           </Link>
 
           {/* Desktop Nav Links */}
-          <div className="hidden lg:flex items-center bg-gray-50/80 p-1 rounded-2xl border border-gray-100 gap-1">
+          <div className="hidden lg:flex items-center bg-gray-50/80 p-1 rounded-2xl border border-gray-100 gap-2">
             {navLinks.map((link) => (
               <Link
                 key={link.to}

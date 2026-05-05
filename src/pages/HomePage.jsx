@@ -241,27 +241,53 @@ const HomePage = () => {
       </section>
 
       {/* ===== CTA BANNER ===== */}
-      <section className="mx-4 sm:mx-8 lg:mx-auto max-w-[1440px] mb-20">
+      <section className="mx-4 sm:mx-8 lg:mx-auto max-w-[1440px] mt-12 mb-20">
         <div
-          className="rounded-3xl px-10 py-16 sm:px-20 sm:py-20 text-white relative overflow-hidden"
-          style={{ background: 'linear-gradient(135deg, #FF6B35 0%, #E8551F 50%, #C44214 100%)' }}
+          className="rounded-3xl px-8 py-12 sm:px-16 sm:py-16 text-white relative overflow-hidden"
+          style={{ background: 'linear-gradient(135deg, #FF6B35 0%, #E8551F 55%, #C44214 100%)' }}
         >
-          <div className="absolute right-0 top-0 w-64 h-64 opacity-10 text-[200px] leading-none select-none">🍔</div>
-          <div className="relative z-10 max-w-2xl">
-            <h2 className="text-xl sm:text-4xl font-black mb-3 leading-tight">
-              Đói bụng chưa? 🎉
-            </h2>
-            <p className="text-white/90 text-sm sm:text-lg mb-8">
-              Đặt ngay và nhận ngay ưu đãi <strong>free ship</strong> cho đơn đầu tiên!
-            </p>
-            <Link
-              to="/menu"
-              id="cta-order-btn"
-              className="inline-flex items-center gap-2 bg-white font-bold px-8 py-3 rounded-xl hover:bg-orange-50 transition-all"
-              style={{ color: '#FF6B35' }}
-            >
-              Đặt ngay bây giờ <ArrowRight size={18} />
-            </Link>
+          {/* Decorative blobs */}
+          <div className="absolute -right-8 -top-8 w-56 h-56 rounded-full opacity-10" style={{ background: 'radial-gradient(circle, #fff 0%, transparent 70%)' }} />
+          <div className="absolute right-24 bottom-0 w-40 h-40 rounded-full opacity-10" style={{ background: 'radial-gradient(circle, #fff 0%, transparent 70%)' }} />
+          <div className="absolute right-4 top-4 text-[120px] leading-none select-none opacity-20 hidden sm:block">🍔</div>
+
+          <div className="relative z-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-8">
+            <div className="max-w-xl">
+              <span className="inline-block text-xs font-bold uppercase tracking-widest bg-white/20 px-3 py-1 rounded-full mb-4">Ưu đãi hôm nay</span>
+              <h2 className="text-3xl sm:text-5xl font-black mb-3 leading-tight">
+                Đói bụng chưa? 🎉
+              </h2>
+              <p className="text-white/85 text-sm sm:text-base mb-6">
+                Đặt ngay hôm nay và nhận ưu đãi <strong className="text-white">free ship</strong> cho đơn hàng đầu tiên của bạn!
+              </p>
+              <div className="flex flex-wrap gap-4 text-sm text-white/80 mb-8">
+                <span className="flex items-center gap-1.5"><span className="text-base">⚡</span> Giao trong 30 phút</span>
+                <span className="flex items-center gap-1.5"><span className="text-base">🛡️</span> Đảm bảo chất lượng</span>
+                <span className="flex items-center gap-1.5"><span className="text-base">🎁</span> Free ship đơn đầu</span>
+              </div>
+              <Link
+                to="/menu"
+                id="cta-order-btn"
+                className="inline-flex items-center gap-2.5 bg-white font-black px-8 py-3.5 rounded-2xl hover:bg-orange-50 transition-all shadow-lg shadow-black/10 hover:-translate-y-0.5 text-sm sm:text-base"
+                style={{ color: '#FF6B35' }}
+              >
+                Đặt ngay bây giờ <ArrowRight size={18} />
+              </Link>
+            </div>
+
+            {/* Stats column */}
+            <div className="hidden sm:flex flex-col gap-4 min-w-40">
+              {[
+                { value: '50+', label: 'Món ăn' },
+                { value: '4.8★', label: 'Đánh giá TB' },
+                { value: '30p', label: 'Giao hàng' },
+              ].map((stat) => (
+                <div key={stat.label} className="bg-white/15 backdrop-blur-sm rounded-2xl px-5 py-3 text-center border border-white/20">
+                  <p className="text-2xl font-black">{stat.value}</p>
+                  <p className="text-white/75 text-xs mt-0.5">{stat.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
