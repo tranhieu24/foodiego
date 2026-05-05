@@ -118,14 +118,14 @@ const Navbar = ({ onSearch }) => {
           {/* Search Bar */}
           <div className="hidden md:flex items-center flex-1 max-w-md ml-8">
             <form onSubmit={handleSearch} className="relative w-full">
-              <Search size={15} className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400" strokeWidth={2} />
+              <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400" strokeWidth={2} />
               <input
                 id="navbar-search"
                 type="text"
                 placeholder="Tìm món hoặc quán ăn"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-4 pr-10 py-2 text-sm bg-gray-100 border border-transparent rounded-full focus:outline-none focus:bg-white focus:border-orange-500 focus:ring-2 focus:ring-orange-100 transition-all duration-300 placeholder:text-gray-400"
+                className="w-full pl-10 pr-4 py-2 text-sm bg-gray-100 border border-transparent rounded-full focus:outline-none focus:bg-white focus:border-orange-500 focus:ring-2 focus:ring-orange-100 transition-all duration-300 placeholder:text-gray-400"
               />
             </form>
           </div>
@@ -260,7 +260,7 @@ const Navbar = ({ onSearch }) => {
           <div className="lg:hidden pb-6 animate-slide-in-up border-t border-gray-100 mt-4 pt-6 space-y-2">
             <form onSubmit={handleSearch} className="mb-4">
               <div className="relative group">
-                <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
                 <input
                   type="text"
                   placeholder="Bạn muốn ăn gì?"

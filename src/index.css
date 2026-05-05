@@ -29,6 +29,7 @@ body {
   background-color: #FFF8F0;
   color: #1A1A2E;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 /* Custom scrollbar */

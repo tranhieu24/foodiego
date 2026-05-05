@@ -18,7 +18,7 @@ const Footer = () => {
       <div className="w-full h-0.5" style={{ backgroundColor: '#FF6B35' }} />
 
       {/* Main content */}
-      <div style={{ backgroundColor: '#111' }} className="py-16">
+      <div style={{ backgroundColor: '#111' }} className="w-full py-16">
         <div className="max-w-[1440px] mx-auto px-8 sm:px-12 lg:px-16">
           {/* 4 columns grid - responsive */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16">
@@ -111,19 +111,19 @@ const Footer = () => {
               <h4 className="text-xs font-semibold text-white uppercase tracking-wide">Liên hệ</h4>
               <ul className="space-y-3.5">
                 <li className="flex items-center gap-3">
-                  <Phone size={16} style={{ color: '#FF6B35' }} className="flex-shrink-0" />
+                  <Phone size={16} style={{ color: '#FF6B35' }} className="shrink-0" />
                   <a href="tel:1900 1234" style={{ color: '#666' }} className="text-xs hover:text-white">
                     1900 1234
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
-                  <Mail size={16} style={{ color: '#FF6B35' }} className="flex-shrink-0" />
+                  <Mail size={16} style={{ color: '#FF6B35' }} className="shrink-0" />
                   <a href="mailto:hello@foodiego.com" style={{ color: '#666' }} className="text-xs hover:text-white">
                     hello@foodiego.com
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
-                  <MapPin size={16} style={{ color: '#FF6B35' }} className="flex-shrink-0" />
+                  <MapPin size={16} style={{ color: '#FF6B35' }} className="shrink-0" />
                   <span style={{ color: '#666' }} className="text-xs">
                     123 Đường ABC<br />TP. Hồ Chí Minh
                   </span>
