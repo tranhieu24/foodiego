@@ -204,39 +204,55 @@ const AdminDashboard = () => {
   );
 
   return (
-    <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: '#F1F5F9' }}>
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="flex min-h-screen" style={{ paddingTop: '72px', backgroundColor: '#F1F5F9' }}>
 
-        {/* ── Header ── */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #FF6B35, #E8551F)' }}>
-              <LayoutDashboard size={20} className="text-white" />
+      {/* ── Sidebar ── */}
+      <aside className="w-56 shrink-0 bg-white border-r border-gray-100 shadow-sm sticky top-[72px] self-start h-[calc(100vh-72px)] flex flex-col overflow-y-auto z-20">
+        {/* Brand */}
+        <div className="px-5 py-5 border-b border-gray-100">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'linear-gradient(135deg, #FF6B35, #E8551F)' }}>
+              <LayoutDashboard size={16} className="text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-black text-gray-800">Admin Dashboard</h1>
-              <p className="text-xs text-gray-500">FoodieGo Management System</p>
+              <p className="text-sm font-black text-gray-800">Admin Panel</p>
+              <p className="text-[10px] text-gray-400">FoodieGo</p>
             </div>
           </div>
-          <button onClick={() => { fetchProducts(); fetchOrders(); fetchUsers(); }}
-            className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 bg-white border border-gray-200 rounded-xl hover:border-orange-300 transition-all">
-            <RefreshCw size={15} /> Làm mới
-          </button>
         </div>
 
-        {/* ── Tab nav ── */}
-        <div className="flex gap-1 bg-white border border-gray-200 p-1 rounded-2xl mb-6 w-fit shadow-sm">
+        {/* Nav */}
+        <nav className="flex-1 px-3 py-4 space-y-1">
           {TABS.map(t => (
             <button key={t.id} onClick={() => setTab(t.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all ${tab === t.id ? 'text-white shadow-md' : 'text-gray-500 hover:text-gray-700'}`}
+              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-all ${tab === t.id ? 'text-white shadow-md' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-800'}`}
               style={tab === t.id ? { background: 'linear-gradient(135deg, #FF6B35, #E8551F)' } : {}}>
-              <t.icon size={15} />
-              {t.label}
+              <t.icon size={16} />
+              <span className="flex-1 text-left">{t.label}</span>
               {t.id === 'orders' && pendingCount > 0 && (
-                <span className="bg-red-500 text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center">{pendingCount}</span>
+                <span className={`text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center ${tab === t.id ? 'bg-white text-orange-500' : 'bg-red-500 text-white'}`}>
+                  {pendingCount}
+                </span>
               )}
             </button>
           ))}
+        </nav>
+
+        {/* Refresh */}
+        <div className="px-3 pb-4">
+          <button onClick={() => { fetchProducts(); fetchOrders(); fetchUsers(); }}
+            className="w-full flex items-center justify-center gap-2 px-3 py-2.5 text-xs text-gray-500 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-xl transition-all font-medium">
+            <RefreshCw size={13} /> Làm mới dữ liệu
+          </button>
+        </div>
+      </aside>
+
+      {/* ── Main content ── */}
+      <div className="flex-1 min-w-0 p-6 overflow-x-auto">
+        {/* Page title */}
+        <div className="mb-6">
+          <h1 className="text-xl font-black text-gray-800">{TABS.find(t => t.id === tab)?.label}</h1>
+          <p className="text-xs text-gray-400 mt-0.5">FoodieGo Management System</p>
         </div>
 
         {/* ════════════════════════════════
@@ -602,7 +618,8 @@ const AdminDashboard = () => {
               )}
           </div>
         )}
-      </div>
+
+      </div>{/* end main content */}
 
       {/* ── Add/Edit Product Modal ── */}
       <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}
