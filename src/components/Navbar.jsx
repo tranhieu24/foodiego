@@ -226,14 +226,14 @@ const Navbar = ({ onSearch }) => {
             <div className="lg:hidden pb-3 pt-2 animate-slide-in-up">
               <form onSubmit={handleSearch}>
                 <div className="relative">
-                  <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+                  <Search size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
                   <input
                     autoFocus
                     type="text"
                     placeholder="Bạn muốn ăn gì?"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-11 pr-4 py-3 text-sm bg-gray-50 border border-orange-200 rounded-2xl focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                    className="w-full pl-4 pr-11 py-3 text-sm bg-gray-50 border border-orange-200 rounded-2xl focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
                   />
                 </div>
               </form>
