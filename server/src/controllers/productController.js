@@ -1,11 +1,28 @@
 import asyncHandler from 'express-async-handler';
 import Product from '../models/Product.js';
 
+const VALID_CATEGORIES = ['burger', 'pizza', 'pho', 'sushi', 'salad', 'drink', 'dessert'];
+
+// Seed products only (never deletes users or orders)
+const autoSeedProducts = async () => {
+  const count = await Product.countDocuments({
+    price: { $gt: 0 },
+    category: { $in: VALID_CATEGORIES },
+  });
+  if (count < 10) {
+    console.log('Seeding products...');
+    const { default: seedData } = await import('../data/products.js');
+    await Product.deleteMany();
+    await Product.insertMany(seedData);
+    console.log(`Seeded ${seedData.length} products.`);
+  }
+};
+
 // @desc    Get all products
 // @route   GET /api/products
 // @access  Public
 const getProducts = asyncHandler(async (req, res) => {
-  const VALID_CATEGORIES = ['burger', 'pizza', 'pho', 'sushi', 'salad', 'drink', 'dessert'];
+  await autoSeedProducts();
   const products = await Product.find({
     price: { $gt: 0 },
     category: { $in: VALID_CATEGORIES },

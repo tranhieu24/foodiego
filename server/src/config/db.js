@@ -1,33 +1,41 @@
 import mongoose from 'mongoose';
-import Product from '../models/Product.js';
-import { importData } from '../utils/seederUtils.js';
+
+// Cache connection across Vercel serverless invocations within the same instance
+let cached = global._mongoose;
+if (!cached) {
+  cached = global._mongoose = { conn: null, promise: null };
+}
 
 const connectDB = async () => {
-  try {
-    if (!process.env.MONGODB_URI) {
-      throw new Error('MONGODB_URI environment variable is not defined');
-    }
-    
-    const conn = await mongoose.connect(process.env.MONGODB_URI);
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
-
-    // Auto-seed if no valid products exist
-    const VALID_CATEGORIES = ['burger', 'pizza', 'pho', 'sushi', 'salad', 'drink', 'dessert'];
-    const validCount = await Product.countDocuments({
-      price: { $gt: 0 },
-      category: { $in: VALID_CATEGORIES },
-      image: { $exists: true, $ne: '' },
-    });
-    if (validCount < 10) {
-      console.log('Insufficient valid products. Starting re-seed...');
-      await importData();
-    }
-  } catch (error) {
-    console.error(`Error connecting to database: ${error.message}`);
-    // Don't exit on Vercel - let the process continue
-    // Requests will fail with proper error messages instead
+  if (cached.conn && mongoose.connection.readyState === 1) {
+    return cached.conn;
   }
+
+  if (!process.env.MONGODB_URI) {
+    throw new Error('MONGODB_URI environment variable is not defined');
+  }
+
+  if (!cached.promise) {
+    cached.promise = mongoose
+      .connect(process.env.MONGODB_URI, {
+        serverSelectionTimeoutMS: 8000,
+        connectTimeoutMS: 8000,
+        socketTimeoutMS: 30000,
+        maxPoolSize: 5,
+        bufferCommands: false,
+      })
+      .then((m) => {
+        console.log(`MongoDB Connected: ${m.connection.host}`);
+        return m;
+      })
+      .catch((err) => {
+        cached.promise = null;
+        throw err;
+      });
+  }
+
+  cached.conn = await cached.promise;
+  return cached.conn;
 };
 
 export default connectDB;
-

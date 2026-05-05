@@ -12,14 +12,22 @@ import userRoutes from './routes/userRoutes.js';
 // Load environment variables
 dotenv.config();
 
-// Connect to Database
-connectDB();
-
 const app = express();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Ensure DB connection on every request (serverless-safe)
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    console.error('DB connection failed:', err.message);
+    return res.status(503).json({ message: 'Database temporarily unavailable. Please try again.' });
+  }
+});
 
 // Routes
 app.use('/api/auth', authRoutes);
