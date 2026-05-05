@@ -19,21 +19,15 @@ const FoodCard = ({ food }) => {
     setAdded(true);
     toast.success(
       <div className="flex items-center gap-3">
-        <img
-          src={imgError ? FALLBACK : food.image}
-          alt={food.name}
+        <img src={imgError ? FALLBACK : food.image} alt={food.name}
           className="w-10 h-10 rounded-lg object-cover shrink-0"
-          onError={(e) => { e.target.src = FALLBACK; }}
-        />
+          onError={(e) => { e.target.src = FALLBACK; }} />
         <div>
           <p className="font-semibold text-gray-800 text-sm">{food.name}</p>
           <p className="text-xs text-gray-500">Đã thêm vào giỏ hàng!</p>
         </div>
       </div>,
-      {
-        duration: 2500,
-        style: { borderRadius: '14px', padding: '10px 14px', boxShadow: '0 8px 30px rgba(0,0,0,0.12)' },
-      }
+      { duration: 2500, style: { borderRadius: '14px', padding: '10px 14px', boxShadow: '0 8px 30px rgba(0,0,0,0.12)' } }
     );
     setTimeout(() => setAdded(false), 1500);
   }, [dispatch, food, imgError]);
@@ -48,9 +42,13 @@ const FoodCard = ({ food }) => {
     : null;
 
   return (
-    <div className="food-card bg-white rounded-2xl overflow-hidden border border-gray-100 flex flex-col group">
-      {/* Image */}
-      <div className="relative overflow-hidden" style={{ height: '176px' }}>
+    <div className="food-card bg-white rounded-2xl overflow-hidden border border-gray-100 group
+                    flex flex-row sm:flex-col">
+
+      {/* ── Image ── */}
+      {/* Mobile: fixed square; Desktop: full-width landscape */}
+      <div className="relative overflow-hidden shrink-0
+                      w-[120px] h-[120px] sm:w-full sm:h-44">
         <img
           src={imgError ? FALLBACK : food.image}
           alt={food.name}
@@ -58,68 +56,64 @@ const FoodCard = ({ food }) => {
           onError={() => setImgError(true)}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
-        {/* Gradient overlay bottom */}
-        <div className="absolute inset-0 bg-linear-to-t from-black/50 via-black/10 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/40 via-black/5 to-transparent" />
 
-        {/* Top badges */}
-        <div className="absolute top-2.5 left-2.5 flex flex-col gap-1.5">
+        {/* Badges */}
+        <div className="absolute top-2 left-2 flex flex-col gap-1">
           {food.isPopular && (
-            <span
-              className="px-2 py-0.5 text-[11px] font-bold text-white rounded-full shadow"
-              style={{ background: 'linear-gradient(135deg, #FF6B35, #E8551F)' }}
-            >
+            <span className="px-1.5 py-0.5 text-[10px] font-bold text-white rounded-full shadow hidden sm:inline"
+              style={{ background: 'linear-gradient(135deg, #FF6B35, #E8551F)' }}>
               🔥 Phổ biến
             </span>
           )}
           {discountPercent && (
-            <span className="px-2 py-0.5 text-[11px] font-bold text-white rounded-full bg-red-500 shadow">
+            <span className="px-1.5 py-0.5 text-[10px] font-bold text-white rounded-full bg-red-500 shadow">
               -{discountPercent}%
             </span>
           )}
         </div>
 
-        {/* Time badge bottom right */}
+        {/* Time badge — desktop only */}
         {food.time && (
-          <div className="absolute bottom-2.5 right-2.5 flex items-center gap-1 bg-black/55 text-white text-[10px] px-2 py-0.5 rounded-full backdrop-blur-sm">
-            <Clock size={10} />
-            {food.time}
+          <div className="absolute bottom-2 right-2 hidden sm:flex items-center gap-1 bg-black/55 text-white text-[10px] px-2 py-0.5 rounded-full backdrop-blur-sm">
+            <Clock size={10} /> {food.time}
           </div>
         )}
       </div>
 
-      {/* Content */}
-      <div className="p-3.5 flex flex-col flex-1">
-        <h3 className="font-bold text-gray-800 text-sm leading-snug mb-1 line-clamp-1">
+      {/* ── Content ── */}
+      <div className="flex flex-col flex-1 p-3 sm:p-3.5">
+        <h3 className="font-bold text-gray-800 text-sm leading-snug mb-0.5 sm:mb-1 line-clamp-1">
           {food.name}
         </h3>
-        <p className="text-[11px] text-gray-400 line-clamp-2 mb-3 flex-1 leading-relaxed">
+
+        {/* Description — desktop only */}
+        <p className="hidden sm:block text-[11px] text-gray-400 line-clamp-2 mb-3 flex-1 leading-relaxed">
           {food.description}
         </p>
 
         {/* Rating */}
-        <div className="flex items-center gap-1 mb-3">
-          <Star size={12} className="fill-amber-400 text-amber-400" />
+        <div className="flex items-center gap-1 mb-2 sm:mb-3">
+          <Star size={11} className="fill-amber-400 text-amber-400" />
           <span className="text-xs font-bold text-gray-700">{food.rating}</span>
           {food.reviews && (
-            <span className="text-[11px] text-gray-400">({food.reviews})</span>
+            <span className="text-[10px] text-gray-400 hidden sm:inline">({food.reviews})</span>
           )}
         </div>
 
-        {/* Price row: original left — sale price right */}
-        <div className="flex items-end justify-between mb-2.5">
+        {/* Price row */}
+        <div className="flex items-end justify-between mb-2">
           {food.originalPrice ? (
-            <span className="text-xs text-gray-400 line-through leading-none">
+            <span className="text-[10px] text-gray-400 line-through leading-none">
               {formatPrice(food.originalPrice)}
             </span>
-          ) : (
-            <span />
-          )}
-          <span className="text-lg font-black text-orange-500 leading-none">
+          ) : <span />}
+          <span className="text-base font-black text-orange-500 leading-none">
             {formatPrice(food.price)}
           </span>
         </div>
 
-        {/* Add to cart button */}
+        {/* Add button */}
         <button
           onClick={handleAddToCart}
           className={`w-full flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs font-bold text-white transition-all duration-200 ${
@@ -128,11 +122,11 @@ const FoodCard = ({ food }) => {
           style={!added ? { background: 'linear-gradient(135deg, #FF6B35, #E8551F)' } : {}}
         >
           {added ? (
-            <><Check size={13} /> Đã thêm</>
+            <><Check size={12} /> Đã thêm</>
           ) : isInCart ? (
-            <><Plus size={13} /> Thêm nữa</>
+            <><Plus size={12} /> Thêm nữa</>
           ) : (
-            <><ShoppingCart size={13} /> Thêm vào giỏ</>
+            <><ShoppingCart size={12} /> Thêm</>
           )}
         </button>
       </div>

@@ -61,7 +61,8 @@ const HomePage = () => {
   return (
     <div className="min-h-screen overflow-x-hidden">
       {/* ===== HERO BANNER ===== */}
-      <section className="relative overflow-hidden" style={{ minHeight: '520px' }}>
+      {/* -mt-20 cancels out the main pt-20 so hero stays full-bleed behind navbar */}
+      <section className="relative overflow-hidden -mt-20" style={{ minHeight: 'clamp(340px, 55vw, 520px)' }}>
         <div
           className="absolute inset-0 transition-all duration-1000"
           style={{
@@ -72,30 +73,30 @@ const HomePage = () => {
         />
         <div className="absolute inset-0 hero-gradient opacity-80" />
 
-        <div className="relative z-10 max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 flex items-center min-h-[520px]">
+        <div className="relative z-10 max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 flex items-end sm:items-center pb-10 sm:pb-0 pt-24 sm:pt-0" style={{ minHeight: 'clamp(340px, 55vw, 520px)' }}>
           <div className="text-white max-w-lg animate-fade-in" key={currentSlide}>
             <div
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-4"
+              className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-4"
               style={{ backgroundColor: slide.accent + '33', border: `1px solid ${slide.accent}` }}
             >
               <span style={{ color: slide.accent }}>✨ Ưu đãi đặc biệt</span>
             </div>
-            <h1 className="text-5xl sm:text-6xl font-black leading-tight mb-3">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight mb-2 sm:mb-3">
               {slide.title}
               <br />
               <span style={{ color: slide.accent }}>{slide.subtitle}</span>
             </h1>
-            <p className="text-white/80 text-lg mb-8">{slide.description}</p>
-            <div className="flex flex-wrap gap-3">
+            <p className="text-white/80 text-sm sm:text-lg mb-5 sm:mb-8 hidden sm:block">{slide.description}</p>
+            <div className="flex flex-wrap gap-2 sm:gap-3">
               <button
                 onClick={() => navigate('/menu')}
-                className="btn-primary flex items-center gap-2 px-6 py-3 rounded-xl text-base"
+                className="btn-primary flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl text-sm sm:text-base"
               >
-                {slide.cta} <ArrowRight size={18} />
+                {slide.cta} <ArrowRight size={16} />
               </button>
               <button
                 onClick={() => navigate('/menu')}
-                className="flex items-center gap-2 px-6 py-3 rounded-xl text-base font-semibold text-white border-2 border-white/30 hover:border-white/60 hover:bg-white/10 transition-all"
+                className="hidden sm:flex items-center gap-2 px-6 py-3 rounded-xl text-base font-semibold text-white border-2 border-white/30 hover:border-white/60 hover:bg-white/10 transition-all"
               >
                 Xem thực đơn
               </button>
@@ -130,7 +131,7 @@ const HomePage = () => {
       </section>
 
       {/* ===== FEATURES ===== */}
-      <section className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20 mb-16">
+      <section className="hidden sm:block w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20 mb-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {features.map((f) => (
             <div key={f.title} className="glass-card rounded-2xl p-5 shadow-lg flex items-center gap-4 transition-transform hover:scale-[1.02]">

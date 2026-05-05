@@ -204,10 +204,10 @@ const AdminDashboard = () => {
   );
 
   return (
-    <div className="flex min-h-screen" style={{ paddingTop: '72px', backgroundColor: '#F1F5F9' }}>
+    <div className="flex min-h-screen" style={{ backgroundColor: '#F1F5F9' }}>
 
       {/* ── Sidebar ── */}
-      <aside className="w-56 shrink-0 bg-white border-r border-gray-100 shadow-sm sticky top-[72px] self-start h-[calc(100vh-72px)] flex flex-col overflow-y-auto z-20">
+      <aside className="w-56 shrink-0 bg-white border-r border-gray-100 shadow-sm sticky top-20 self-start h-[calc(100vh-80px)] flex flex-col overflow-y-auto z-20">
         {/* Brand */}
         <div className="px-5 py-5 border-b border-gray-100">
           <div className="flex items-center gap-2.5">
