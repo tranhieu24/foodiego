@@ -117,7 +117,7 @@ const LoginPage = () => {
             </button>
 
             <FacebookLogin
-              appId="YOUR_FACEBOOK_APP_ID"
+              appId={import.meta.env.VITE_FACEBOOK_APP_ID || ''}
               callback={responseFacebook}
               render={renderProps => (
                 <button
@@ -173,7 +173,7 @@ const LoginPage = () => {
             <div className="flex flex-col gap-1.5">
               <div className="flex items-center justify-between">
                 <label className="text-sm font-medium text-gray-700">Mật khẩu</label>
-                <Link to="/forgot-password" title="Chưa có tính năng này" className="text-xs font-medium text-[#FF6B35] hover:underline">
+                <Link to="/forgot-password" className="text-xs font-medium text-[#FF6B35] hover:underline">
                   Quên mật khẩu?
                 </Link>
               </div>

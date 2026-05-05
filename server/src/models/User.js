@@ -17,7 +17,6 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: [true, 'Please add a password'],
     minlength: 6,
     select: false,
   },
@@ -26,6 +25,10 @@ const userSchema = new mongoose.Schema({
     enum: ['user', 'admin'],
     default: 'user',
   },
+  googleId: { type: String },
+  facebookId: { type: String },
+  resetPasswordToken: { type: String },
+  resetPasswordExpire: { type: Date },
   addresses: [{
     label: { type: String, enum: ['Nhà riêng', 'Công ty', 'Trường học', 'Khác'], default: 'Khác' },
     addressDetail: { type: String, required: true },
@@ -41,8 +44,8 @@ const userSchema = new mongoose.Schema({
 
 // Encrypt password using bcrypt
 userSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) {
-    next();
+  if (!this.isModified('password') || !this.password) {
+    return next();
   }
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
@@ -50,6 +53,7 @@ userSchema.pre('save', async function (next) {
 
 // Match user entered password to hashed password in database
 userSchema.methods.matchPassword = async function (enteredPassword) {
+  if (!this.password) return false;
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
