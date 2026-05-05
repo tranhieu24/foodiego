@@ -105,35 +105,36 @@ const FoodCard = ({ food }) => {
           )}
         </div>
 
-        {/* Price + Button */}
-        <div className="flex items-center justify-between gap-2">
-          <div className="flex flex-col leading-tight">
-            <span className="text-base font-black text-orange-500">
-              {formatPrice(food.price)}
+        {/* Price row: original left — sale price right */}
+        <div className="flex items-end justify-between mb-2.5">
+          {food.originalPrice ? (
+            <span className="text-xs text-gray-400 line-through leading-none">
+              {formatPrice(food.originalPrice)}
             </span>
-            {food.originalPrice && (
-              <span className="text-[11px] text-gray-400 line-through">
-                {formatPrice(food.originalPrice)}
-              </span>
-            )}
-          </div>
-
-          <button
-            onClick={handleAddToCart}
-            className={`flex items-center gap-1 px-3 py-2 rounded-xl text-[11px] font-bold text-white transition-all duration-200 shrink-0 ${
-              added ? 'bg-green-500 scale-95' : ''
-            }`}
-            style={!added ? { background: 'linear-gradient(135deg, #FF6B35, #E8551F)' } : {}}
-          >
-            {added ? (
-              <><Check size={13} /> Đã thêm</>
-            ) : isInCart ? (
-              <><Plus size={13} /> Thêm nữa</>
-            ) : (
-              <><ShoppingCart size={13} /> Thêm</>
-            )}
-          </button>
+          ) : (
+            <span />
+          )}
+          <span className="text-lg font-black text-orange-500 leading-none">
+            {formatPrice(food.price)}
+          </span>
         </div>
+
+        {/* Add to cart button */}
+        <button
+          onClick={handleAddToCart}
+          className={`w-full flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs font-bold text-white transition-all duration-200 ${
+            added ? 'bg-green-500 scale-95' : ''
+          }`}
+          style={!added ? { background: 'linear-gradient(135deg, #FF6B35, #E8551F)' } : {}}
+        >
+          {added ? (
+            <><Check size={13} /> Đã thêm</>
+          ) : isInCart ? (
+            <><Plus size={13} /> Thêm nữa</>
+          ) : (
+            <><ShoppingCart size={13} /> Thêm vào giỏ</>
+          )}
+        </button>
       </div>
     </div>
   );
