@@ -18,7 +18,7 @@ function AppLayout() {
   return (
     <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: '#FFF8F0' }}>
       <Navbar />
-      <main className="w-full max-w-[1920px] mx-auto overflow-x-hidden">
+      <main className="w-full max-w-[1920px] mx-auto overflow-x-hidden pb-20 lg:pb-0">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/menu" element={<MenuPage />} />
