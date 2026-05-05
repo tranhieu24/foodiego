@@ -455,7 +455,7 @@ const AdminDashboard = () => {
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-100 flex flex-wrap items-center justify-between gap-3">
               <h2 className="font-bold text-gray-800">Đơn hàng ({filteredOrders.length})</h2>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 {[
                   { id: 'all', label: 'Tất cả' },
                   { id: 'pending', label: '🚚 Chờ giao' },
@@ -463,7 +463,7 @@ const AdminDashboard = () => {
                   { id: 'paid', label: '💳 Đã thanh toán' },
                 ].map(f => (
                   <button key={f.id} onClick={() => { setOrderFilter(f.id); setOrderPage(1); }}
-                    className={`px-3 py-1.5 text-xs font-semibold rounded-xl transition-all ${orderFilter === f.id ? 'text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                    className={`px-5 py-2.5 text-sm font-semibold rounded-xl transition-all select-none ${orderFilter === f.id ? 'text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
                     style={orderFilter === f.id ? { background: 'linear-gradient(135deg, #FF6B35, #E8551F)' } : {}}>
                     {f.label}
                   </button>
