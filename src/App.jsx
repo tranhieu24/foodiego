@@ -80,15 +80,17 @@ function AppLayout() {
 }
 
 function App() {
-  return (
+  const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+  const inner = (
     <Provider store={store}>
-      <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID || ''}>
-        <BrowserRouter>
-          <AppLayout />
-        </BrowserRouter>
-      </GoogleOAuthProvider>
+      <BrowserRouter>
+        <AppLayout />
+      </BrowserRouter>
     </Provider>
   );
+  return googleClientId ? (
+    <GoogleOAuthProvider clientId={googleClientId}>{inner}</GoogleOAuthProvider>
+  ) : inner;
 }
 
 export default App;
