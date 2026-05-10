@@ -248,9 +248,9 @@ const AdminDashboard = () => {
       </aside>
 
       {/* ── Main content ── */}
-      <div className="flex-1 min-w-0 p-6 overflow-x-auto">
-        {/* Page title */}
-        <div className="mb-6">
+      <div className="flex-1 min-w-0 p-6">
+        {/* Page title — sticky so it stays visible while scrolling */}
+        <div className="sticky top-20 z-20 -mx-6 px-6 pt-2 pb-3 mb-3 bg-[#F1F5F9]">
           <h1 className="text-xl font-black text-gray-800">{TABS.find(t => t.id === tab)?.label}</h1>
           <p className="text-xs text-gray-400 mt-0.5">FoodieGo Management System</p>
         </div>

@@ -275,34 +275,34 @@ const OrderHistoryPage = () => {
           </button>
         </div>
 
-        {/* Stats bar — desktop only */}
+        {/* Stats bar — responsive */}
         {!loading && orders.length > 0 && (
-          <div className="hidden sm:grid grid-cols-3 gap-4 mb-6">
-            <div className="bg-white rounded-2xl px-5 py-4 border border-gray-100 shadow-sm flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center">
-                <Package size={18} className="text-orange-500" />
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-4 sm:mb-6">
+            <div className="bg-white rounded-xl sm:rounded-2xl px-3 sm:px-5 py-3 sm:py-4 border border-gray-100 shadow-sm flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-orange-50 flex items-center justify-center shrink-0">
+                <Package size={15} className="text-orange-500" />
               </div>
-              <div>
-                <p className="text-2xl font-black text-gray-800">{orders.length}</p>
-                <p className="text-xs text-gray-400 font-medium">Tổng đơn hàng</p>
-              </div>
-            </div>
-            <div className="bg-white rounded-2xl px-5 py-4 border border-gray-100 shadow-sm flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
-                <Truck size={18} className="text-blue-500" />
-              </div>
-              <div>
-                <p className="text-2xl font-black text-gray-800">{pendingCount}</p>
-                <p className="text-xs text-gray-400 font-medium">Đang giao</p>
+              <div className="min-w-0">
+                <p className="text-lg sm:text-2xl font-black text-gray-800 leading-none">{orders.length}</p>
+                <p className="text-[10px] sm:text-xs text-gray-400 font-medium mt-0.5 truncate">Tổng đơn</p>
               </div>
             </div>
-            <div className="bg-white rounded-2xl px-5 py-4 border border-gray-100 shadow-sm flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center">
-                <CheckCircle2 size={18} className="text-green-500" />
+            <div className="bg-white rounded-xl sm:rounded-2xl px-3 sm:px-5 py-3 sm:py-4 border border-gray-100 shadow-sm flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-blue-50 flex items-center justify-center shrink-0">
+                <Truck size={15} className="text-blue-500" />
               </div>
-              <div>
-                <p className="text-2xl font-black text-gray-800">{deliveredCount}</p>
-                <p className="text-xs text-gray-400 font-medium">Đã giao</p>
+              <div className="min-w-0">
+                <p className="text-lg sm:text-2xl font-black text-gray-800 leading-none">{pendingCount}</p>
+                <p className="text-[10px] sm:text-xs text-gray-400 font-medium mt-0.5 truncate">Đang giao</p>
+              </div>
+            </div>
+            <div className="bg-white rounded-xl sm:rounded-2xl px-3 sm:px-5 py-3 sm:py-4 border border-gray-100 shadow-sm flex items-center gap-2 sm:gap-3">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-green-50 flex items-center justify-center shrink-0">
+                <CheckCircle2 size={15} className="text-green-500" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-lg sm:text-2xl font-black text-gray-800 leading-none">{deliveredCount}</p>
+                <p className="text-[10px] sm:text-xs text-gray-400 font-medium mt-0.5 truncate">Đã giao</p>
               </div>
             </div>
           </div>
