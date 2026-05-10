@@ -80,17 +80,16 @@ function AppLayout() {
 }
 
 function App() {
-  const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
-  const inner = (
-    <Provider store={store}>
-      <BrowserRouter>
-        <AppLayout />
-      </BrowserRouter>
-    </Provider>
+  const googleClientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || 'placeholder-no-google';
+  return (
+    <GoogleOAuthProvider clientId={googleClientId}>
+      <Provider store={store}>
+        <BrowserRouter>
+          <AppLayout />
+        </BrowserRouter>
+      </Provider>
+    </GoogleOAuthProvider>
   );
-  return googleClientId ? (
-    <GoogleOAuthProvider clientId={googleClientId}>{inner}</GoogleOAuthProvider>
-  ) : inner;
 }
 
 export default App;
