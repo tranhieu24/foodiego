@@ -4,17 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Eye, EyeOff, Loader2, ChefHat, CheckCircle2, ShieldCheck, Zap } from 'lucide-react';
 import { useGoogleLogin } from '@react-oauth/google';
-import FacebookLoginModule from 'react-facebook-login/dist/facebook-login-render-props';
-const FacebookLogin = FacebookLoginModule.default || FacebookLoginModule;
 
-import { 
-  loginAsync, 
-  googleLoginAsync, 
-  facebookLoginAsync, 
-  selectIsAuthenticated, 
-  selectAuthError, 
-  selectAuthLoading, 
-  clearError 
+import {
+  loginAsync,
+  googleLoginAsync,
+  selectIsAuthenticated,
+  selectAuthError,
+  selectAuthLoading,
+  clearError
 } from '../store/authSlice';
 
 const LoginPage = () => {
@@ -50,12 +47,6 @@ const LoginPage = () => {
     },
     onError: () => console.log('Google Login Failed'),
   });
-
-  const responseFacebook = (response) => {
-    if (response.accessToken) {
-      dispatch(facebookLoginAsync(response.accessToken));
-    }
-  };
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
@@ -102,59 +93,20 @@ const LoginPage = () => {
           </div>
 
           {/* Social Login */}
-          <div className="grid grid-cols-2 gap-3">
-            {/* Google */}
-            {import.meta.env.VITE_GOOGLE_CLIENT_ID ? (
-              <button
-                onClick={() => googleLogin()}
-                className="flex items-center justify-center gap-2 py-3 px-4 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all"
-              >
-                <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24">
-                  <path fill="#EA4335" d="M5.266 9.765A7.077 7.077 0 0 1 12 4.909c1.69 0 3.218.6 4.418 1.582L19.91 3C17.782 1.145 15.055 0 12 0 7.27 0 3.198 2.698 1.24 6.65l4.026 3.115Z" />
-                  <path fill="#34A853" d="M16.04 18.013c-1.09.693-2.414 1.096-4.04 1.096-3.414 0-6.273-2.318-7.305-5.396l-4.054 3.13C2.551 20.959 6.964 24 12 24c3.082 0 5.836-1.017 8.027-2.734l-4.015-3.253Z" />
-                  <path fill="#4285F4" d="M23.49 12.275c0-.826-.074-1.62-.21-2.387H12v4.513h6.44a5.523 5.523 0 0 1-2.395 3.62l4.015 3.253C22.444 19.334 24 16.03 24 12.275Z" />
-                  <path fill="#FBBC05" d="M5.266 9.765l-4.026-3.115C.46 8.353 0 10.12 0 12c0 1.88.46 3.647 1.266 5.253l4.054-3.13A7.101 7.101 0 0 1 4.909 12c0-1.112.26-2.162.357-2.235Z" />
-                </svg>
-                Google
-              </button>
-            ) : (
-              <button disabled className="flex items-center justify-center gap-2 py-3 px-4 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-300 cursor-not-allowed opacity-50">
-                <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24">
-                  <path fill="#ccc" d="M5.266 9.765A7.077 7.077 0 0 1 12 4.909c1.69 0 3.218.6 4.418 1.582L19.91 3C17.782 1.145 15.055 0 12 0 7.27 0 3.198 2.698 1.24 6.65l4.026 3.115Z" />
-                  <path fill="#ccc" d="M16.04 18.013c-1.09.693-2.414 1.096-4.04 1.096-3.414 0-6.273-2.318-7.305-5.396l-4.054 3.13C2.551 20.959 6.964 24 12 24c3.082 0 5.836-1.017 8.027-2.734l-4.015-3.253Z" />
-                  <path fill="#ccc" d="M23.49 12.275c0-.826-.074-1.62-.21-2.387H12v4.513h6.44a5.523 5.523 0 0 1-2.395 3.62l4.015 3.253C22.444 19.334 24 16.03 24 12.275Z" />
-                  <path fill="#ccc" d="M5.266 9.765l-4.026-3.115C.46 8.353 0 10.12 0 12c0 1.88.46 3.647 1.266 5.253l4.054-3.13A7.101 7.101 0 0 1 4.909 12c0-1.112.26-2.162.357-2.235Z" />
-                </svg>
-                Google
-              </button>
-            )}
-
-            {/* Facebook */}
-            {import.meta.env.VITE_FACEBOOK_APP_ID ? (
-              <FacebookLogin
-                appId={import.meta.env.VITE_FACEBOOK_APP_ID}
-                callback={responseFacebook}
-                render={renderProps => (
-                  <button
-                    onClick={renderProps.onClick}
-                    className="flex items-center justify-center gap-2 py-3 px-4 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all"
-                  >
-                    <svg className="w-[18px] h-[18px]" fill="#1877F2" viewBox="0 0 24 24">
-                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                    </svg>
-                    Facebook
-                  </button>
-                )}
-              />
-            ) : (
-              <button disabled className="flex items-center justify-center gap-2 py-3 px-4 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-300 cursor-not-allowed opacity-50">
-                <svg className="w-[18px] h-[18px]" fill="#ccc" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                </svg>
-                Facebook
-              </button>
-            )}
-          </div>
+          {import.meta.env.VITE_GOOGLE_CLIENT_ID && (
+            <button
+              onClick={() => googleLogin()}
+              className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-white border border-gray-200 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all"
+            >
+              <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24">
+                <path fill="#EA4335" d="M5.266 9.765A7.077 7.077 0 0 1 12 4.909c1.69 0 3.218.6 4.418 1.582L19.91 3C17.782 1.145 15.055 0 12 0 7.27 0 3.198 2.698 1.24 6.65l4.026 3.115Z" />
+                <path fill="#34A853" d="M16.04 18.013c-1.09.693-2.414 1.096-4.04 1.096-3.414 0-6.273-2.318-7.305-5.396l-4.054 3.13C2.551 20.959 6.964 24 12 24c3.082 0 5.836-1.017 8.027-2.734l-4.015-3.253Z" />
+                <path fill="#4285F4" d="M23.49 12.275c0-.826-.074-1.62-.21-2.387H12v4.513h6.44a5.523 5.523 0 0 1-2.395 3.62l4.015 3.253C22.444 19.334 24 16.03 24 12.275Z" />
+                <path fill="#FBBC05" d="M5.266 9.765l-4.026-3.115C.46 8.353 0 10.12 0 12c0 1.88.46 3.647 1.266 5.253l4.054-3.13A7.101 7.101 0 0 1 4.909 12c0-1.112.26-2.162.357-2.235Z" />
+              </svg>
+              Đăng nhập với Google
+            </button>
+          )}
 
           {/* Divider */}
           <div className="flex items-center gap-3 my-2">
