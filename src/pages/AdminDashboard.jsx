@@ -478,60 +478,61 @@ const AdminDashboard = () => {
                   <div className="overflow-x-auto">
                     <table className="w-full text-sm">
                       <thead><tr className="bg-gray-50 text-xs font-semibold text-gray-500 uppercase tracking-wide">
-                        <th className="px-6 py-3 text-left">Mã đơn</th>
-                        <th className="px-6 py-3 text-left">Khách hàng</th>
-                        <th className="px-6 py-3 text-left">Món ăn</th>
-                        <th className="px-6 py-3 text-left">Tổng tiền</th>
-                        <th className="px-6 py-3 text-left">Thanh toán</th>
-                        <th className="px-6 py-3 text-left">Giao hàng</th>
-                        <th className="px-6 py-3 text-left">Ngày đặt</th>
-                        <th className="px-6 py-3 text-center">Thao tác</th>
+                        <th className="px-3 py-3 text-left">Mã đơn</th>
+                        <th className="px-3 py-3 text-left">Khách hàng</th>
+                        <th className="px-3 py-3 text-left">Món ăn</th>
+                        <th className="px-3 py-3 text-left">Tổng tiền</th>
+                        <th className="px-3 py-3 text-left">Trạng thái</th>
+                        <th className="px-3 py-3 text-left">Ngày đặt</th>
+                        <th className="px-3 py-3 text-center">Thao tác</th>
                       </tr></thead>
                       <tbody className="divide-y divide-gray-50">
                         {pagedOrders.map(o => (
                           <tr key={o._id} className="hover:bg-gray-50/60 transition-colors">
-                            <td className="px-6 py-3 font-mono text-xs font-bold text-gray-600">#{o._id.slice(-6).toUpperCase()}</td>
-                            <td className="px-6 py-3">
-                              <p className="font-medium text-gray-800">{o.user?.name || 'N/A'}</p>
-                              <p className="text-xs text-gray-400">{o.shippingAddress?.phone}</p>
+                            <td className="px-3 py-3 font-mono text-xs font-bold text-gray-600">#{o._id.slice(-6).toUpperCase()}</td>
+                            <td className="px-3 py-3">
+                              <p className="font-medium text-gray-800 text-xs">{o.user?.name || 'N/A'}</p>
+                              <p className="text-[11px] text-gray-400">{o.shippingAddress?.phone}</p>
                             </td>
-                            <td className="px-6 py-3">
-                              <div className="flex -space-x-2">
+                            <td className="px-3 py-3">
+                              <div className="flex -space-x-1.5">
                                 {o.orderItems?.slice(0, 3).map((item, i) => (
                                   <img key={i} src={item.image} alt={item.name}
-                                    className="w-8 h-8 rounded-lg object-cover border-2 border-white"
+                                    className="w-7 h-7 rounded-lg object-cover border-2 border-white"
                                     onError={e => { e.target.src = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=60&q=60'; }} />
                                 ))}
                                 {o.orderItems?.length > 3 && (
-                                  <div className="w-8 h-8 rounded-lg bg-gray-100 border-2 border-white flex items-center justify-center text-[10px] font-bold text-gray-500">
+                                  <div className="w-7 h-7 rounded-lg bg-gray-100 border-2 border-white flex items-center justify-center text-[10px] font-bold text-gray-500">
                                     +{o.orderItems.length - 3}
                                   </div>
                                 )}
                               </div>
-                              <p className="text-xs text-gray-400 mt-1">{o.orderItems?.length} món</p>
+                              <p className="text-[11px] text-gray-400 mt-0.5">{o.orderItems?.length} món</p>
                             </td>
-                            <td className="px-6 py-3 font-bold text-orange-500">{fmt(o.totalPrice)}</td>
-                            <td className="px-6 py-3">
-                              <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${o.isPaid ? 'bg-green-100 text-green-600' : 'bg-yellow-100 text-yellow-600'}`}>
-                                {o.isPaid ? '✓ Đã TT' : '⏳ Chờ TT'}
-                              </span>
+                            <td className="px-3 py-3 font-bold text-orange-500 text-xs whitespace-nowrap">{fmt(o.totalPrice)}</td>
+                            <td className="px-3 py-3">
+                              <div className="flex flex-col gap-1">
+                                <span className={`text-[11px] px-2 py-0.5 rounded-full font-medium w-fit ${o.isPaid ? 'bg-green-100 text-green-600' : 'bg-yellow-100 text-yellow-600'}`}>
+                                  {o.isPaid ? '✓ Đã TT' : '⏳ Chờ TT'}
+                                </span>
+                                <span className={`text-[11px] px-2 py-0.5 rounded-full font-medium w-fit ${o.isDelivered ? 'bg-green-100 text-green-600' : 'bg-orange-100 text-orange-600'}`}>
+                                  {o.isDelivered ? '✓ Đã giao' : '🚚 Đang giao'}
+                                </span>
+                              </div>
                             </td>
-                            <td className="px-6 py-3">
-                              <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${o.isDelivered ? 'bg-green-100 text-green-600' : 'bg-orange-100 text-orange-600'}`}>
-                                {o.isDelivered ? '✓ Đã giao' : '🚚 Đang giao'}
-                              </span>
-                            </td>
-                            <td className="px-6 py-3 text-xs text-gray-500">{fmtDate(o.createdAt)}</td>
-                            <td className="px-6 py-3 text-center">
-                              {!o.isDelivered && (
+                            <td className="px-3 py-3 text-xs text-gray-500 whitespace-nowrap">{fmtDate(o.createdAt)}</td>
+                            <td className="px-3 py-3 text-center">
+                              {!o.isDelivered ? (
                                 <button onClick={() => handleDeliver(o._id)}
                                   disabled={updatingOrderId === o._id}
-                                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-green-600 bg-green-50 hover:bg-green-100 rounded-lg transition-colors mx-auto disabled:opacity-50">
+                                  className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-green-600 bg-green-50 hover:bg-green-100 rounded-lg transition-colors mx-auto disabled:opacity-50 whitespace-nowrap">
                                   {updatingOrderId === o._id
-                                    ? <Loader2 size={12} className="animate-spin" />
-                                    : <CheckCircle2 size={12} />}
+                                    ? <Loader2 size={11} className="animate-spin" />
+                                    : <CheckCircle2 size={11} />}
                                   Đã giao
                                 </button>
+                              ) : (
+                                <span className="text-xs text-gray-300 font-medium">—</span>
                               )}
                             </td>
                           </tr>

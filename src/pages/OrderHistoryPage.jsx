@@ -250,12 +250,15 @@ const OrderHistoryPage = () => {
     );
   }
 
+  const deliveredCount = orders.filter(o => o.isDelivered).length;
+  const pendingCount = orders.filter(o => !o.isDelivered).length;
+
   return (
     <div className="min-h-screen py-10 overflow-x-hidden" style={{ backgroundColor: '#F8F9FA' }}>
-      <div className="max-w-3xl mx-auto px-4">
+      <div className="max-w-4xl mx-auto px-4">
 
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-6">
           <div>
             <h1 className="text-2xl font-black text-gray-800">Đơn hàng của tôi</h1>
             <p className="text-gray-400 text-sm mt-0.5">
@@ -271,6 +274,39 @@ const OrderHistoryPage = () => {
             Làm mới
           </button>
         </div>
+
+        {/* Stats bar — desktop only */}
+        {!loading && orders.length > 0 && (
+          <div className="hidden sm:grid grid-cols-3 gap-4 mb-6">
+            <div className="bg-white rounded-2xl px-5 py-4 border border-gray-100 shadow-sm flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center">
+                <Package size={18} className="text-orange-500" />
+              </div>
+              <div>
+                <p className="text-2xl font-black text-gray-800">{orders.length}</p>
+                <p className="text-xs text-gray-400 font-medium">Tổng đơn hàng</p>
+              </div>
+            </div>
+            <div className="bg-white rounded-2xl px-5 py-4 border border-gray-100 shadow-sm flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                <Truck size={18} className="text-blue-500" />
+              </div>
+              <div>
+                <p className="text-2xl font-black text-gray-800">{pendingCount}</p>
+                <p className="text-xs text-gray-400 font-medium">Đang giao</p>
+              </div>
+            </div>
+            <div className="bg-white rounded-2xl px-5 py-4 border border-gray-100 shadow-sm flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center">
+                <CheckCircle2 size={18} className="text-green-500" />
+              </div>
+              <div>
+                <p className="text-2xl font-black text-gray-800">{deliveredCount}</p>
+                <p className="text-xs text-gray-400 font-medium">Đã giao</p>
+              </div>
+            </div>
+          </div>
+        )}
 
         {loading ? (
           <div className="flex flex-col items-center justify-center py-24">
