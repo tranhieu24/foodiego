@@ -123,6 +123,10 @@ const updateOrderToDelivered = asyncHandler(async (req, res) => {
   if (order) {
     order.isDelivered = true;
     order.deliveredAt = Date.now();
+    if (order.paymentMethod === 'COD' && !order.isPaid) {
+      order.isPaid = true;
+      order.paidAt = Date.now();
+    }
     const updated = await order.save();
     res.json(updated);
   } else {
