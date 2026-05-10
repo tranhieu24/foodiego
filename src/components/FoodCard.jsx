@@ -42,13 +42,10 @@ const FoodCard = ({ food }) => {
     : null;
 
   return (
-    <div className="food-card bg-white rounded-2xl overflow-hidden border border-gray-100 group
-                    flex flex-row sm:flex-col">
+    <div className="food-card bg-white rounded-2xl overflow-hidden border border-gray-100 group flex flex-col">
 
       {/* ── Image ── */}
-      {/* Mobile: fixed square; Desktop: full-width landscape */}
-      <div className="relative overflow-hidden shrink-0
-                      w-[120px] h-[120px] sm:w-full sm:h-44">
+      <div className="relative overflow-hidden shrink-0 w-full h-36 sm:h-44">
         <img
           src={imgError ? FALLBACK : food.image}
           alt={food.name}
@@ -61,7 +58,7 @@ const FoodCard = ({ food }) => {
         {/* Badges */}
         <div className="absolute top-2 left-2 flex flex-col gap-1">
           {food.isPopular && (
-            <span className="px-1.5 py-0.5 text-[10px] font-bold text-white rounded-full shadow hidden sm:inline"
+            <span className="px-1.5 py-0.5 text-[10px] font-bold text-white rounded-full shadow"
               style={{ background: 'linear-gradient(135deg, #FF6B35, #E8551F)' }}>
               🔥 Phổ biến
             </span>
@@ -73,9 +70,8 @@ const FoodCard = ({ food }) => {
           )}
         </div>
 
-        {/* Time badge — desktop only */}
         {food.time && (
-          <div className="absolute bottom-2 right-2 hidden sm:flex items-center gap-1 bg-black/55 text-white text-[10px] px-2 py-0.5 rounded-full backdrop-blur-sm">
+          <div className="absolute bottom-2 right-2 flex items-center gap-1 bg-black/55 text-white text-[10px] px-2 py-0.5 rounded-full backdrop-blur-sm">
             <Clock size={10} /> {food.time}
           </div>
         )}
@@ -87,8 +83,7 @@ const FoodCard = ({ food }) => {
           {food.name}
         </h3>
 
-        {/* Description — desktop only */}
-        <p className="hidden sm:block text-[11px] text-gray-400 line-clamp-2 mb-3 flex-1 leading-relaxed">
+        <p className="text-[11px] text-gray-400 line-clamp-2 mb-2 flex-1 leading-relaxed">
           {food.description}
         </p>
 
@@ -97,7 +92,7 @@ const FoodCard = ({ food }) => {
           <Star size={11} className="fill-amber-400 text-amber-400" />
           <span className="text-xs font-bold text-gray-700">{food.rating}</span>
           {food.reviews && (
-            <span className="text-[10px] text-gray-400 hidden sm:inline">({food.reviews})</span>
+            <span className="text-[10px] text-gray-400">({food.reviews})</span>
           )}
         </div>
 

@@ -18,9 +18,9 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 
 function AppLayout() {
   return (
-    <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: '#FFF8F0' }}>
+    <div className="min-h-screen flex flex-col overflow-x-hidden" style={{ backgroundColor: '#FFF8F0' }}>
       <Navbar />
-      <main className="w-full max-w-[1920px] mx-auto overflow-x-hidden pt-20 pb-20 lg:pb-0">
+      <main className="flex-1 w-full max-w-[1920px] mx-auto overflow-x-hidden pt-20 pb-20 lg:pb-0">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/menu" element={<MenuPage />} />
