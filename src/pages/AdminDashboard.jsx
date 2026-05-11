@@ -204,56 +204,55 @@ const AdminDashboard = () => {
   );
 
   return (
-    <div className="flex min-h-screen" style={{ backgroundColor: '#F1F5F9' }}>
+    <div className="min-h-[calc(100vh-80px)]" style={{ backgroundColor: '#F1F5F9' }}>
 
-      {/* ── Sidebar ── */}
-      <aside className="w-56 shrink-0 bg-white border-r border-gray-100 shadow-sm sticky top-20 self-start h-[calc(100vh-80px)] flex flex-col overflow-y-auto z-20">
-        {/* Brand */}
-        <div className="px-5 py-5 border-b border-gray-100">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'linear-gradient(135deg, #FF6B35, #E8551F)' }}>
-              <LayoutDashboard size={16} className="text-white" />
+      {/* ══════════════ TOP BAR: Brand + Horizontal Tabs + Refresh ══════════════ */}
+      <div className="bg-white border-b border-gray-100 shadow-sm">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 pt-5 pb-0">
+          {/* Title row */}
+          <div className="flex items-center justify-between gap-4 mb-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: 'linear-gradient(135deg, #FF6B35, #E8551F)' }}>
+                <LayoutDashboard size={20} className="text-white" />
+              </div>
+              <div className="leading-tight">
+                <h1 className="text-xl font-black text-gray-800">Admin Panel</h1>
+                <p className="text-xs text-gray-400 mt-0.5 hidden sm:block">FoodieGo Management System</p>
+              </div>
             </div>
-            <div>
-              <p className="text-sm font-black text-gray-800">Admin Panel</p>
-              <p className="text-[10px] text-gray-400">FoodieGo</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Nav */}
-        <nav className="flex-1 px-3 py-4 space-y-1">
-          {TABS.map(t => (
-            <button key={t.id} onClick={() => setTab(t.id)}
-              className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-all ${tab === t.id ? 'text-white shadow-md' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-800'}`}
-              style={tab === t.id ? { background: 'linear-gradient(135deg, #FF6B35, #E8551F)' } : {}}>
-              <t.icon size={16} />
-              <span className="flex-1 text-left">{t.label}</span>
-              {t.id === 'orders' && pendingCount > 0 && (
-                <span className={`text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center ${tab === t.id ? 'bg-white text-orange-500' : 'bg-red-500 text-white'}`}>
-                  {pendingCount}
-                </span>
-              )}
+            <button onClick={() => { fetchProducts(); fetchOrders(); fetchUsers(); }}
+              className="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-gray-600 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-xl transition-all">
+              <RefreshCw size={13} /> <span className="hidden sm:inline">Làm mới</span>
             </button>
-          ))}
-        </nav>
+          </div>
 
-        {/* Refresh */}
-        <div className="px-3 pb-4">
-          <button onClick={() => { fetchProducts(); fetchOrders(); fetchUsers(); }}
-            className="w-full flex items-center justify-center gap-2 px-3 py-2.5 text-xs text-gray-500 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-xl transition-all font-medium">
-            <RefreshCw size={13} /> Làm mới dữ liệu
-          </button>
+          {/* Tabs row — flex-1 chia đều, padding rộng, font lớn cho dễ click trên mọi device */}
+          <nav className="flex items-stretch -mb-px overflow-x-auto">
+            {TABS.map(t => {
+              const active = tab === t.id;
+              return (
+                <button key={t.id} onClick={() => setTab(t.id)}
+                  className={`flex-1 min-w-[120px] flex items-center justify-center gap-2 px-4 py-4 text-sm sm:text-base font-bold transition-all border-b-2 whitespace-nowrap ${
+                    active
+                      ? 'text-orange-600 border-orange-500 bg-orange-50/40'
+                      : 'text-gray-500 border-transparent hover:text-gray-800 hover:bg-gray-50'
+                  }`}>
+                  <t.icon size={18} />
+                  <span>{t.label}</span>
+                  {t.id === 'orders' && pendingCount > 0 && (
+                    <span className="text-[10px] font-black min-w-5 h-5 px-1.5 rounded-full flex items-center justify-center bg-red-500 text-white">
+                      {pendingCount}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </nav>
         </div>
-      </aside>
+      </div>
 
-      {/* ── Main content ── */}
-      <div className="flex-1 min-w-0 p-6">
-        {/* Page title — sticky so it stays visible while scrolling */}
-        <div className="sticky top-20 z-20 -mx-6 px-6 pt-2 pb-3 mb-3 bg-[#F1F5F9]">
-          <h1 className="text-xl font-black text-gray-800">{TABS.find(t => t.id === tab)?.label}</h1>
-          <p className="text-xs text-gray-400 mt-0.5">FoodieGo Management System</p>
-        </div>
+      {/* ══════════════ MAIN CONTENT ══════════════ */}
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 py-6">
 
         {/* ════════════════════════════════
             TAB: TỔNG QUAN
@@ -359,10 +358,10 @@ const AdminDashboard = () => {
                   <ChevronDown size={13} className="absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
                 </div>
                 <div className="relative">
-                  <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                   <input type="text" placeholder="Tìm món..." value={productSearch}
                     onChange={e => setProductSearch(e.target.value)}
-                    className="pl-9 pr-4 py-2 text-sm bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-orange-400 w-44" />
+                    className="pl-4 pr-10 py-2 text-sm bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-orange-400 w-52" />
+                  <Search size={15} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
                 </div>
                 <button onClick={openAddModal}
                   className="btn-primary flex items-center gap-2 px-4 py-2 rounded-xl text-sm">
@@ -453,9 +452,12 @@ const AdminDashboard = () => {
         ════════════════════════════════ */}
         {tab === 'orders' && (
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-            <div className="px-6 py-4 border-b border-gray-100 flex flex-wrap items-center justify-between gap-3">
+
+            {/* HEADER — title + filter tabs (responsive) */}
+            <div className="px-4 sm:px-6 py-4 border-b border-gray-100 space-y-3 sm:space-y-0 sm:flex sm:flex-wrap sm:items-center sm:justify-between sm:gap-3">
               <h2 className="font-bold text-gray-800">Đơn hàng ({filteredOrders.length})</h2>
-              <div className="flex flex-wrap gap-2">
+              {/* Filter tabs — scroll ngang trên mobile, không bao giờ chồng */}
+              <div className="flex gap-2 overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap sm:overflow-visible scrollbar-hide">
                 {[
                   { id: 'all', label: 'Tất cả' },
                   { id: 'pending', label: '🚚 Chờ giao' },
@@ -463,7 +465,7 @@ const AdminDashboard = () => {
                   { id: 'paid', label: '💳 Đã thanh toán' },
                 ].map(f => (
                   <button key={f.id} onClick={() => { setOrderFilter(f.id); setOrderPage(1); }}
-                    className={`px-5 py-2.5 text-sm font-semibold rounded-xl transition-all select-none ${orderFilter === f.id ? 'text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                    className={`shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all select-none whitespace-nowrap ${orderFilter === f.id ? 'text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
                     style={orderFilter === f.id ? { background: 'linear-gradient(135deg, #FF6B35, #E8551F)' } : {}}>
                     {f.label}
                   </button>
@@ -475,7 +477,77 @@ const AdminDashboard = () => {
               ? <div className="flex justify-center py-16"><Loader2 className="animate-spin text-orange-500" size={32} /></div>
               : (
                 <>
-                  <div className="overflow-x-auto">
+                  {/* ════════════════════════════════════════════
+                       📱 MOBILE — CARD LAYOUT (< md)
+                       ════════════════════════════════════════════ */}
+                  <div className="md:hidden divide-y divide-gray-100">
+                    {pagedOrders.map(o => (
+                      <article key={o._id} className="p-4 space-y-3">
+                        {/* Row 1: Order ID + Status badges */}
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="min-w-0">
+                            <p className="font-mono text-xs font-bold text-gray-600">#{o._id.slice(-6).toUpperCase()}</p>
+                            <p className="text-[11px] text-gray-400 mt-0.5">{fmtDate(o.createdAt)}</p>
+                          </div>
+                          <div className="flex flex-col items-end gap-1 shrink-0">
+                            <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${o.isPaid ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>
+                              {o.isPaid ? '✓ Đã thanh toán' : '⏳ Chờ thanh toán'}
+                            </span>
+                            <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${o.isDelivered ? 'bg-green-100 text-green-700' : 'bg-orange-100 text-orange-700'}`}>
+                              {o.isDelivered ? '✓ Đã giao' : '🚚 Đang giao'}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Row 2: Customer info + Total */}
+                        <div className="flex items-end justify-between gap-3 bg-gray-50 rounded-xl px-3 py-2.5">
+                          <div className="min-w-0 flex-1">
+                            <p className="text-sm font-semibold text-gray-800 truncate">{o.user?.name || 'Khách'}</p>
+                            <p className="text-xs text-gray-500 truncate">📞 {o.shippingAddress?.phone || '—'}</p>
+                          </div>
+                          <div className="text-right shrink-0">
+                            <p className="text-base font-black text-orange-500 whitespace-nowrap">{fmt(o.totalPrice)}</p>
+                            <p className="text-[10px] text-gray-400">{o.orderItems?.length} món</p>
+                          </div>
+                        </div>
+
+                        {/* Row 3: Item thumbnails */}
+                        <div className="flex items-center -space-x-1.5">
+                          {o.orderItems?.slice(0, 4).map((item, i) => (
+                            <img key={i} src={item.image} alt={item.name}
+                              className="w-8 h-8 rounded-lg object-cover border-2 border-white shadow-sm"
+                              onError={e => { e.target.src = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=60&q=60'; }} />
+                          ))}
+                          {o.orderItems?.length > 4 && (
+                            <div className="w-8 h-8 rounded-lg bg-gray-100 border-2 border-white flex items-center justify-center text-[10px] font-bold text-gray-500 shadow-sm">
+                              +{o.orderItems.length - 4}
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Row 4: Action button (full width) */}
+                        {!o.isDelivered ? (
+                          <button onClick={() => handleDeliver(o._id)}
+                            disabled={updatingOrderId === o._id}
+                            className="w-full flex items-center justify-center gap-2 py-2.5 text-sm font-semibold text-green-700 bg-green-50 hover:bg-green-100 active:scale-[0.99] rounded-xl transition-all disabled:opacity-50">
+                            {updatingOrderId === o._id
+                              ? <Loader2 size={14} className="animate-spin" />
+                              : <CheckCircle2 size={14} />}
+                            Đánh dấu đã giao
+                          </button>
+                        ) : (
+                          <div className="w-full text-center text-xs text-gray-400 py-2 font-medium">
+                            ✓ Hoàn tất
+                          </div>
+                        )}
+                      </article>
+                    ))}
+                  </div>
+
+                  {/* ════════════════════════════════════════════
+                       🖥️ DESKTOP — TABLE LAYOUT (≥ md)
+                       ════════════════════════════════════════════ */}
+                  <div className="hidden md:block overflow-x-auto">
                     <table className="w-full text-sm">
                       <thead><tr className="bg-gray-50 text-xs font-semibold text-gray-500 uppercase tracking-wide">
                         <th className="px-3 py-3 text-left">Mã đơn</th>
@@ -488,7 +560,7 @@ const AdminDashboard = () => {
                       </tr></thead>
                       <tbody className="divide-y divide-gray-50">
                         {pagedOrders.map(o => (
-                          <tr key={o._id} className="hover:bg-gray-50/60 transition-colors">
+                          <tr key={o._id} className="hover:bg-gray-50/60 transition-colors h-[76px]">
                             <td className="px-3 py-3 font-mono text-xs font-bold text-gray-600">#{o._id.slice(-6).toUpperCase()}</td>
                             <td className="px-3 py-3">
                               <p className="font-medium text-gray-800 text-xs">{o.user?.name || 'N/A'}</p>
@@ -537,22 +609,27 @@ const AdminDashboard = () => {
                             </td>
                           </tr>
                         ))}
+                        {/* Empty rows pad bảng để chiều cao đồng đều giữa các trang (chỉ khi có pagination) */}
+                        {totalOrderPages > 1 && Array.from({ length: Math.max(0, ORDERS_PER_PAGE - pagedOrders.length) }).map((_, i) => (
+                          <tr key={`empty-${i}`} className="h-[76px]"><td colSpan={7}></td></tr>
+                        ))}
                       </tbody>
                     </table>
-                    {filteredOrders.length === 0 && <div className="text-center py-16 text-gray-400">Không có đơn hàng nào.</div>}
                   </div>
+
+                  {filteredOrders.length === 0 && <div className="text-center py-16 text-gray-400">Không có đơn hàng nào.</div>}
 
                   {/* Pagination */}
                   {totalOrderPages > 1 && (
-                    <div className="px-6 py-4 border-t border-gray-100 flex items-center justify-between">
+                    <div className="px-4 sm:px-6 py-4 border-t border-gray-100 flex items-center justify-between">
                       <p className="text-xs text-gray-500">Trang {orderPage}/{totalOrderPages} · {filteredOrders.length} đơn</p>
                       <div className="flex items-center gap-2">
                         <button onClick={() => setOrderPage(p => Math.max(1, p - 1))} disabled={orderPage === 1}
-                          className="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 hover:border-orange-300 disabled:opacity-40 transition-all">
+                          className="w-9 h-9 flex items-center justify-center rounded-lg border border-gray-200 hover:border-orange-300 disabled:opacity-40 transition-all">
                           <ChevronLeft size={14} />
                         </button>
                         <button onClick={() => setOrderPage(p => Math.min(totalOrderPages, p + 1))} disabled={orderPage === totalOrderPages}
-                          className="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 hover:border-orange-300 disabled:opacity-40 transition-all">
+                          className="w-9 h-9 flex items-center justify-center rounded-lg border border-gray-200 hover:border-orange-300 disabled:opacity-40 transition-all">
                           <ChevronRight size={14} />
                         </button>
                       </div>
@@ -571,10 +648,10 @@ const AdminDashboard = () => {
             <div className="px-6 py-4 border-b border-gray-100 flex flex-wrap items-center justify-between gap-3">
               <h2 className="font-bold text-gray-800">Người dùng ({filteredUsers.length})</h2>
               <div className="relative">
-                <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                 <input type="text" placeholder="Tìm người dùng..." value={userSearch}
                   onChange={e => setUserSearch(e.target.value)}
-                  className="pl-9 pr-4 py-2 text-sm bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-orange-400 w-52" />
+                  className="pl-4 pr-10 py-2 text-sm bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-orange-400 w-60" />
+                <Search size={15} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
               </div>
             </div>
 

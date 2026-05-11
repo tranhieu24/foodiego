@@ -23,6 +23,7 @@
 html {
   overflow-y: scroll;
   overflow-x: hidden;
+  overscroll-behavior-x: none;
 }
 
 body {
@@ -31,6 +32,9 @@ body {
   color: #1A1A2E;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  overscroll-behavior-x: none;
+  /* iOS Safari: ngăn rubber-band horizontal khi swipe */
+  touch-action: pan-y;
 }
 
 /* Custom scrollbar */
@@ -210,3 +214,71 @@ button, a, .interactive {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* ────────────────────────────────────────────
+   FOODIEGO LOGIN — MOBILE "WARM BOWL" THEME
+   ──────────────────────────────────────────── */
+
+/* Hero mesh gradient: 3-layer (2 radial + 1 linear) — kích thích cảm giác đói */
+.fg-hero-gradient {
+  background:
+    radial-gradient(circle at 22% 28%, rgba(249, 115, 22, 0.18) 0%, transparent 42%),
+    radial-gradient(circle at 78% 18%, rgba(251, 146, 60, 0.22) 0%, transparent 38%),
+    linear-gradient(180deg, #FFF7ED 0%, #FFEDD5 55%, #FFFBF5 100%);
+}
+
+/* Subtle dot pattern texture */
+.fg-pattern-dots {
+  background-image: radial-gradient(rgba(234, 88, 12, 0.07) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+/* Logo glow — orange shadow + white ring inset */
+.fg-logo-glow {
+  box-shadow:
+    0 12px 28px rgba(249, 115, 22, 0.38),
+    0 0 0 4px rgba(255, 255, 255, 0.55);
+}
+
+/* CTA gradient button glow */
+.fg-cta-glow {
+  box-shadow: 0 8px 24px rgba(249, 115, 22, 0.40);
+  transition: all 200ms ease;
+}
+.fg-cta-glow:hover { box-shadow: 0 14px 32px rgba(249, 115, 22, 0.55); }
+
+/* Form card shadow — bottom-sheet feel */
+.fg-card-shadow {
+  box-shadow:
+    0 -6px 24px rgba(15, 23, 42, 0.04),
+    0 24px 48px rgba(15, 23, 42, 0.06);
+}
+
+/* Mobile input — flex wrapper với focus-within (input bên trong transparent) */
+.fg-input-wrap { transition: all 180ms ease; }
+.fg-input-wrap:focus-within {
+  border-color: #F97316;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.12);
+}
+
+/* Social round buttons */
+.fg-social-btn { transition: all 200ms ease; }
+.fg-social-btn:hover {
+  border-color: #F97316;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+}
+.fg-social-btn:active { transform: translateY(0); }
+
+/* Hide horizontal scrollbar (admin filter tabs trên mobile) */
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* Floating decorative icons */
+@keyframes fg-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-12px) rotate(6deg); }
+}
+.fg-float       { animation: fg-float 6s ease-in-out infinite; }
+.fg-float-delay { animation: fg-float 8s ease-in-out infinite; animation-delay: -3s; }

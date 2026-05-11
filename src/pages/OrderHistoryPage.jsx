@@ -255,7 +255,7 @@ const OrderHistoryPage = () => {
 
   return (
     <div className="min-h-screen py-10 overflow-x-hidden" style={{ backgroundColor: '#F8F9FA' }}>
-      <div className="max-w-4xl mx-auto px-4">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
 
         {/* Header */}
         <div className="flex items-center justify-between mb-6">

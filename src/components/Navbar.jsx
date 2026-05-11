@@ -85,8 +85,8 @@ const Navbar = ({ onSearch }) => {
   return (
     <>
       {/* ── Top Navbar ── */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full ${
-        scrolled ? 'bg-white/90 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-b border-gray-100 py-2' : 'bg-white py-3 shadow-sm'
+      <nav className={`sticky top-0 z-50 transition-all duration-500 w-full bg-white ${
+        scrolled ? 'shadow-[0_8px_30px_rgb(0,0,0,0.04)] border-b border-gray-100 py-2' : 'py-3 shadow-sm'
       }`}>
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14 gap-4">
@@ -104,7 +104,7 @@ const Navbar = ({ onSearch }) => {
             </Link>
 
             {/* Desktop Nav Links */}
-            <div className="hidden lg:flex items-center bg-gray-50/80 p-1 rounded-2xl border border-gray-100 gap-2">
+            <div className="hidden md:flex items-center bg-gray-50/80 p-1 rounded-2xl border border-gray-100 gap-2">
               {navLinks.map((link) => (
                 <Link key={link.to} to={link.to}
                   className={`px-4 py-2 rounded-xl text-sm font-bold transition-all duration-300 whitespace-nowrap ${
@@ -116,7 +116,7 @@ const Navbar = ({ onSearch }) => {
             </div>
 
             {/* Desktop Search */}
-            <div className="hidden lg:flex items-center flex-1 max-w-md ml-4">
+            <div className="hidden md:flex items-center flex-1 max-w-md ml-4">
               <form onSubmit={handleSearch} className="relative w-full">
                 <Search size={15} className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400" strokeWidth={2} />
                 <input
@@ -134,7 +134,7 @@ const Navbar = ({ onSearch }) => {
             <div className="flex items-center gap-2 sm:gap-3 shrink-0">
               {/* Mobile: search toggle */}
               <button
-                className="lg:hidden p-2.5 rounded-2xl bg-gray-50 hover:bg-orange-50 text-gray-600 hover:text-orange-500 transition-colors"
+                className="md:hidden p-2.5 rounded-2xl bg-gray-50 hover:bg-orange-50 text-gray-600 hover:text-orange-500 transition-colors"
                 onClick={() => setMobileSearchOpen(!mobileSearchOpen)}
               >
                 {mobileSearchOpen ? <X size={20} /> : <Search size={20} />}
@@ -142,7 +142,7 @@ const Navbar = ({ onSearch }) => {
 
               {/* Desktop: Cart */}
               <Link to="/cart" id="navbar-cart-btn"
-                className={`hidden lg:flex relative p-2.5 rounded-2xl transition-all duration-300 group ${
+                className={`hidden md:flex relative p-2.5 rounded-2xl transition-all duration-300 group ${
                   isActive('/cart') ? 'bg-orange-50 text-orange-500' : 'bg-gray-50 hover:bg-orange-50 text-gray-600 hover:text-orange-500'
                 }`}>
                 <ShoppingCart size={22} className="transition-transform group-hover:scale-110" />
@@ -156,7 +156,7 @@ const Navbar = ({ onSearch }) => {
 
               {/* Desktop: User menu */}
               {isAuthenticated ? (
-                <div className="relative z-50 hidden lg:block">
+                <div className="relative z-50 hidden md:block">
                   <button ref={userMenuBtnRef} id="navbar-user-menu-btn"
                     onClick={() => setShowUserMenu(!showUserMenu)}
                     className={`flex items-center gap-2.5 pl-2 pr-4 py-1.5 rounded-2xl transition-all border ${
@@ -213,7 +213,7 @@ const Navbar = ({ onSearch }) => {
                 </div>
               ) : (
                 <Link to="/login" id="navbar-login-btn"
-                  className="hidden lg:flex items-center gap-2 px-6 py-2.5 rounded-2xl text-sm font-black text-white shadow-lg shadow-orange-100 hover:shadow-orange-200 hover:-translate-y-0.5 transition-all"
+                  className="hidden md:flex items-center gap-2 px-6 py-2.5 rounded-2xl text-sm font-black text-white shadow-lg shadow-orange-100 hover:shadow-orange-200 hover:-translate-y-0.5 transition-all"
                   style={{ background: 'linear-gradient(135deg, #FF6B35, #E8551F)' }}>
                   <User size={16} /> Đăng nhập
                 </Link>
@@ -223,7 +223,7 @@ const Navbar = ({ onSearch }) => {
 
           {/* Mobile expandable search */}
           {mobileSearchOpen && (
-            <div className="lg:hidden pb-3 pt-2 animate-slide-in-up">
+            <div className="md:hidden pb-3 pt-2 animate-slide-in-up">
               <form onSubmit={handleSearch}>
                 <div className="relative">
                   <Search size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
@@ -247,7 +247,7 @@ const Navbar = ({ onSearch }) => {
       </nav>
 
       {/* ── Mobile Bottom Navigation ── */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-100 shadow-[0_-4px_24px_rgba(0,0,0,0.07)]">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-100 shadow-[0_-4px_24px_rgba(0,0,0,0.07)]">
         <div className="flex items-end justify-around px-2 pb-2 pt-1">
 
           <Link to="/" className={`flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-2xl transition-all ${isActive('/') ? 'text-orange-500' : 'text-gray-400'}`}>
@@ -300,8 +300,8 @@ const Navbar = ({ onSearch }) => {
       {/* Mobile Account Bottom Sheet */}
       {showMobileAccount && (
         <>
-          <div className="fixed inset-0 bg-black/40 z-60 lg:hidden" onClick={() => setShowMobileAccount(false)} />
-          <div className="fixed bottom-0 left-0 right-0 z-70 lg:hidden bg-white rounded-t-3xl shadow-2xl animate-slide-in-up">
+          <div className="fixed inset-0 bg-black/40 z-60 md:hidden" onClick={() => setShowMobileAccount(false)} />
+          <div className="fixed bottom-0 left-0 right-0 z-70 md:hidden bg-white rounded-t-3xl shadow-2xl animate-slide-in-up">
             {/* Handle */}
             <div className="w-10 h-1 bg-gray-200 rounded-full mx-auto mt-3 mb-5" />
 
