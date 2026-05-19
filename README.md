@@ -365,4 +365,4 @@ foodiego/
 ---
 
 > 🌐 **Demo:** [https://foodiego-iota.vercel.app/](https://foodiego-iota.vercel.app/)  
-> 👨‍💻 **Author:** Trần Hiếu
+> 👨‍💻 **Author:** Trần Hiếu, Gia Phú , Đặng Tiến Đạt
